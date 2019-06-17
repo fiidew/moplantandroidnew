@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="type_plant">
+        <item>Kangkung</item>
+        <item>Bayam</item>
+        <item>Sawi Hijau</item>
+    </string-array>
+</resources>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".feature.auth.login.LoginActivity"
+    android:orientation="vertical"
+    android:background="@drawable/bglogin">
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="90dp"
+        android:src="@drawable/logo2"
+        android:layout_gravity="center"
+        android:layout_marginTop="60dp"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="50dp"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/et_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:textSize="16sp"
+            android:inputType="textEmailAddress"
+            android:hint="Email"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp">
+
+        <EditText
+            android:id="@+id/et_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_marginRight="50dp"
+            android:layout_marginLeft="50dp"
+            android:hint="Password"
+            android:inputType="textPassword"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginLeft="50dp"
+        android:text="SIGN IN"
+        android:textSize="18sp"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/button"/>
+
+    <TextView
+        android:id="@+id/tvDaftar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:text="Don't have an account? Register here"
+        android:textAlignment="center"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/colorPrimary"/>
+
+</LinearLayout>
