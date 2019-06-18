@@ -7,6 +7,6 @@ public class RegisterContract {
     }
 
     interface Presenter{
-        void register(String nama, String email, String password);
+        void register(String nama, String password, String alamat, String telfon, String username);
     }
 }

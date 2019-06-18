@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
@@ -23,14 +22,14 @@ import butterknife.OnClick;
 
 public class LoginActivity extends Activity implements LoginContract.View {
 
-    @BindView(R.id.et_email)
-    EditText etEmail;
     @BindView(R.id.et_password)
     EditText etPassword;
     @BindView(R.id.btnLogin)
     Button btnLogin;
     @BindView(R.id.tvDaftar)
     TextView tvDaftar;
+    @BindView(R.id.et_username)
+    EditText etUsername;
 
     private ProgressDialog dialog;
     private LoginPresenter presenter;
@@ -49,11 +48,11 @@ public class LoginActivity extends Activity implements LoginContract.View {
 
     @Override
     public void login(boolean isSuccess, String meessages) {
-        if(isSuccess){
+        if (isSuccess) {
             Intent intent = new Intent(this, MainActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
-        }else Toast.makeText(this, meessages , Toast.LENGTH_SHORT).show();
+        } else Toast.makeText(this, meessages, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -62,11 +61,11 @@ public class LoginActivity extends Activity implements LoginContract.View {
         else dialog.cancel(); //or u can use dismiss
     }
 
-    @OnClick({R.id.btnLogin,R.id.tvDaftar})
+    @OnClick({R.id.btnLogin, R.id.tvDaftar})
     public void onViewClicked(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.btnLogin:
-                attachLogin(etEmail.getText().toString(), etPassword.getText().toString());
+                attachLogin(etUsername.getText().toString(), etPassword.getText().toString());
                 break;
             case R.id.tvDaftar:
                 startActivity(new Intent(this, RegisterActivity.class));
@@ -74,22 +73,20 @@ public class LoginActivity extends Activity implements LoginContract.View {
         }
     }
 
-    private void attachLogin(String email, String password) {
-        String emailError = null;
+    private void attachLogin(String username, String password) {
+        String usernameError = null;
         String passwordError = null;
 
-        if (TextUtils.isEmpty(email))
-            emailError = "Email cannot be empty";
-        else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches())
-            emailError = "Email is invalid";
+        if (TextUtils.isEmpty(username))
+            usernameError = "Email cannot be empty";
 
         if (password.length() < 6)
             passwordError = "Password consist min 6 characters";
 
-        if (emailError == null && passwordError == null)
-            presenter.login(email, password);
+        if (usernameError == null && passwordError == null)
+            presenter.login(username, password);
         else {
-            etEmail.setError(emailError);
+            etUsername.setError(usernameError);
             etPassword.setError(passwordError);
         }
     }

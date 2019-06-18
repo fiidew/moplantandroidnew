@@ -21,9 +21,9 @@ public class LoginPresenter implements LoginContract.Presenter {
     }
 
     @Override
-    public void login(String email, String password) {
+    public void login(String username, String password) {
         view.showLoading(true);
-        Call<User> login = service.login(email, password);
+        Call<User> login = service.login(username, password);
         login.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {

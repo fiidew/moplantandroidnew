@@ -7,6 +7,6 @@ public class LoginContract {
     }
 
     interface Presenter{
-        void login(String email, String password);
+        void login(String username, String password);
     }
 }

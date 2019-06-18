@@ -1,5 +1,8 @@
 package com.example.nutplant.service;
+
+import com.example.nutplant.model.ResponseRegister;
 import com.example.nutplant.model.User;
+
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -8,17 +11,19 @@ import retrofit2.http.POST;
 public interface AuthService {
     @FormUrlEncoded
     @POST(ApiURL.LOGIN)
-    Call<User> login (
+    Call<User> login(
             @Field("email") String email,
             @Field("password") String password
     );
 
     @FormUrlEncoded
     @POST(ApiURL.REGISTER)
-    Call<User> register(
-            @Field("nama") String name,
-            @Field("email") String email,
-            @Field("password") String password
+    Call<ResponseRegister> register(@Field("nama") String nama,
+                                    @Field("password") String password,
+                                    @Field("alamat") String alamat,
+                                    @Field("telp") String telfon,
+                                    @Field("username") String username,
+                                    @Field("role") String role
     );
 }
 
