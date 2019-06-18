@@ -36,6 +36,10 @@ public class SessionManager {
         return preferences.getString(KEY_ID, "");
     }
 
+    public String getToken(){
+        return preferences.getString(KEY_TOKEN, "");
+    }
+
     public boolean isLogin(){
         return preferences.getBoolean(is_login,false);
     }

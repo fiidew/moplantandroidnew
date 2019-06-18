@@ -6,6 +6,6 @@ public class ApiURL {
     public static final String CREATE = "manage/create";
     public static final String UPDATE = "manage/update";
     public static final String DELETE = "manage/delete";
-    public static final String GETPLANTS = "manage/read";
+    public static final String GETPLANTS = "api/tanaman/showtanaman";
 
 }

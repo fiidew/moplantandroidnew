@@ -1,7 +1,9 @@
 package com.example.nutplant.feature.manage;
 
 import com.example.nutplant.feature.auth.register.RegisterContract;
+import com.example.nutplant.model.DataPlant;
 import com.example.nutplant.model.Plant;
+import com.example.nutplant.model.ResponseShowplant;
 import com.example.nutplant.model.User;
 import com.example.nutplant.service.ApiClient;
 import com.example.nutplant.service.AuthService;
@@ -23,24 +25,27 @@ public class ManagePresenter implements ManageContract.Presenter {
     }
 
     @Override
-    public void getPlants() {
+    public void getPlants(String token) {
         view.showLoading(true);
-        Call<ArrayList<Plant>> readplants = service.readplants ();
-        readplants.enqueue(new Callback<ArrayList<Plant>>() {
+        Call<ResponseShowplant> readplants = service.readplants (token);
+        readplants.enqueue(new Callback<ResponseShowplant>() {
             @Override
-            public void onResponse(Call<ArrayList<Plant>> call, Response<ArrayList<Plant>> response) {
+            public void onResponse(Call<ResponseShowplant> call, Response<ResponseShowplant> response) {
                 view.showLoading(false);
                 if (response.code() == 200){
-                    view.read(response.body());//samain kayak fungsi dicontract
+                    if(response.body().getStatus())
+                        view.read (response.body().getData(),"");
+                    else
+                        view.read (null, response.body().getMessage());//samain kayak fungsi dicontract
                 }else {
-                    view.read(null);
+                    view.read(null, response.message());
                 }
             }
 
             @Override
-            public void onFailure(Call<ArrayList<Plant>> call, Throwable t) {
+            public void onFailure(Call<ResponseShowplant> call, Throwable t) {
                 view.showLoading(false);
-                view.read(null);
+                view.read(null, t.getMessage());
                 call.cancel();
                 t.printStackTrace();
             }

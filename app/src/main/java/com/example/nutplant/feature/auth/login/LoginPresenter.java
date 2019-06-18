@@ -3,11 +3,8 @@ package com.example.nutplant.feature.auth.login;
 import android.content.Context;
 
 import com.example.nutplant.model.ResponseLogin;
-import com.example.nutplant.model.User;
 import com.example.nutplant.service.ApiClient;
 import com.example.nutplant.service.AuthService;
-import com.example.nutplant.service.UserInterface;
-import com.example.nutplant.feature.auth.login.LoginContract.Presenter;
 import com.example.nutplant.utils.SessionManager;
 
 import retrofit2.Call;

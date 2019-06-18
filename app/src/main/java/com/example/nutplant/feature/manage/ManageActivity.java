@@ -10,7 +10,9 @@ import com.example.nutplant.R;
 import com.example.nutplant.adapters.PlantAdapter;
 import com.example.nutplant.feature.auth.register.RegisterContract;
 import com.example.nutplant.feature.auth.register.RegisterPresenter;
+import com.example.nutplant.model.DataPlant;
 import com.example.nutplant.model.Plant;
+import com.example.nutplant.utils.SessionManager;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -29,6 +31,7 @@ public class ManageActivity extends AppCompatActivity implements ManageContract.
     FloatingActionButton fab;
     ManageContract.Presenter presenter;
     ProgressDialog dialog;
+    SessionManager sessionManager;
 
     private PlantAdapter adapter;
     public ManageActivity() {
@@ -41,6 +44,7 @@ public class ManageActivity extends AppCompatActivity implements ManageContract.
         ButterKnife.bind(this);
 
         presenter = new ManagePresenter(this);
+        sessionManager = new SessionManager(this);
 
         dialog = new ProgressDialog(this);
         dialog.setMessage("Loading");
@@ -52,17 +56,17 @@ public class ManageActivity extends AppCompatActivity implements ManageContract.
         managePlant.setHasFixedSize(false);
         managePlant.setAdapter(adapter);
 
-        presenter.getPlants();
+        presenter.getPlants(sessionManager.getToken());
     }
 
     @Override
-    public void read(ArrayList<Plant> plants) {
+    public void read(ArrayList<DataPlant> plants, String message) {
         if (plants != null){
 //            adapter.getAll().clear();
             adapter.getAll().addAll(plants);
             adapter.notifyDataSetChanged();
         }else{
-            Toast.makeText(this, "Failed get data", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
         }
     }
 
