@@ -39,7 +39,7 @@ public class LoginActivity extends Activity implements LoginContract.View {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
-        presenter = new LoginPresenter(this);
+        presenter = new LoginPresenter(this,this);
         dialog = new ProgressDialog(this);
         dialog.setTitle("Login");
         dialog.setMessage("Loading");

@@ -1,5 +1,6 @@
 package com.example.nutplant.service;
 
+import com.example.nutplant.model.ResponseLogin;
 import com.example.nutplant.model.ResponseRegister;
 import com.example.nutplant.model.User;
 
@@ -11,8 +12,8 @@ import retrofit2.http.POST;
 public interface AuthService {
     @FormUrlEncoded
     @POST(ApiURL.LOGIN)
-    Call<User> login(
-            @Field("email") String email,
+    Call<ResponseLogin> login(
+            @Field("username") String username,
             @Field("password") String password
     );
 
