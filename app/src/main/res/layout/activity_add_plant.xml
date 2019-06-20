@@ -12,11 +12,12 @@
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
         android:layout_marginTop="64dp"
-        android:text="Data tanaman baru"
+        android:layout_marginEnd="8dp"
+        android:text="Add Plant"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="20sp"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,77 +25,96 @@
         android:id="@+id/edtNameP"
         android:layout_width="276dp"
         android:layout_height="45dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
         android:ems="10"
-        android:hint="Nama Tanaman"
+        android:hint="Name of Plant"
         android:inputType="text"
         android:paddingLeft="10dp"
-        app:layout_constraintStart_toStartOf="@+id/textView5"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <EditText
+        android:id="@+id/edtSpeciesP"
+        android:layout_width="279dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:hint="Select Species of Plant"
+        android:inputType="textPersonName"
+        android:paddingLeft="10dp"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtNameP" />
 
     <EditText
         android:id="@+id/edtAreaP"
         android:layout_width="279dp"
         android:layout_height="45dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
         android:ems="10"
-        android:hint="Luas Area Tanam"
+        android:hint="Field Area (m x m)"
         android:inputType="textPersonName"
         android:paddingLeft="10dp"
-        app:layout_constraintStart_toStartOf="@+id/edtNameP"
-        app:layout_constraintTop_toBottomOf="@+id/edtNameP" />
-
-    <Button
-        android:id="@+id/btnSubmit"
-        android:layout_width="251dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="64dp"
-        android:background="@drawable/button"
-        android:text="Submit"
-        android:textColor="@android:color/white"
-        android:textSize="20sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Calendar" />
+        app:layout_constraintTop_toBottomOf="@+id/edtSpeciesP" />
 
-    <ImageView
-        android:id="@+id/edtCategoryP"
-        android:layout_width="34dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintStart_toStartOf="@+id/edtAreaP"
-        app:layout_constraintTop_toBottomOf="@+id/edtAreaP"
-        app:srcCompat="@drawable/icon_add_plant2" />
-
-    <TextView
-        android:id="@+id/CategoryP"
-        android:layout_width="wrap_content"
-        android:layout_height="38dp"
+    <EditText
+        android:id="@+id/edtLocationP"
+        android:layout_width="279dp"
+        android:layout_height="45dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
-        android:text="Pilih Jenis Tumbuhan"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:hint="Select location of field"
+        android:inputType="textPersonName"
+        android:paddingLeft="10dp"
         android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/edtCategoryP"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtAreaP" />
 
-    <ImageView
-        android:id="@+id/calendar"
-        android:layout_width="34dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintStart_toStartOf="@+id/edtCategoryP"
-        app:layout_constraintTop_toBottomOf="@+id/edtCategoryP"
-        app:srcCompat="@android:drawable/ic_menu_my_calendar" />
-
-    <TextView
-        android:id="@+id/Calendar"
-        android:layout_width="wrap_content"
-        android:layout_height="38dp"
+    <EditText
+        android:id="@+id/edtDateP"
+        android:layout_width="279dp"
+        android:layout_height="45dp"
         android:layout_marginStart="8dp"
-        android:text="Tanggal mulai tanam"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:hint="Select start date of plant"
+        android:inputType="textPersonName"
+        android:paddingLeft="10dp"
         android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/calendar"
-        app:layout_constraintTop_toTopOf="@+id/calendar" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtLocationP" />
+
+    <Button
+        android:id="@+id/btnCreate"
+        android:layout_width="283dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/button"
+        android:text="SAVE"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtDateP" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

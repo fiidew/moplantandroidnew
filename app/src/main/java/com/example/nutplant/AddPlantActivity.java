@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
@@ -32,16 +31,15 @@ public class AddPlantActivity extends AppCompatActivity {
     EditText edtNameP;
     @BindView(R.id.edtAreaP)
     EditText edtAreaP;
-    @BindView(R.id.btnSubmit)
-    Button btnSubmit;
-    @BindView(R.id.edtCategoryP)
-    ImageView edtCategoryP;
-    @BindView(R.id.CategoryP)
-    TextView CategoryP;
-    @BindView(R.id.calendar)
-    ImageView calendar;
-    @BindView(R.id.Calendar)
-    TextView TxtCalendar;
+    @BindView(R.id.edtSpeciesP)
+    EditText edtSpeciesP;
+    @BindView(R.id.edtLocationP)
+    EditText edtLocationP;
+    @BindView(R.id.edtDateP)
+    EditText edtDateP;
+    @BindView(R.id.btnCreate)
+    Button btnCreate;
+
     private Context mContext;
     private Activity mActivity;
 
@@ -56,7 +54,7 @@ public class AddPlantActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_plant);
         ButterKnife.bind(this);
 
-        edtCategoryP.setOnClickListener(new View.OnClickListener() {
+        edtSpeciesP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 final AlertDialog.Builder builder = new AlertDialog.Builder(AddPlantActivity.this);
@@ -77,7 +75,7 @@ public class AddPlantActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 String selectedItem = Arrays.asList(tanaman).get(i);
 
-                                CategoryP.setText(selectedItem);
+                                edtSpeciesP.setText(selectedItem);
                             }
                         });
 
@@ -108,7 +106,7 @@ public class AddPlantActivity extends AppCompatActivity {
                 Calendar newDate = Calendar.getInstance();
                 newDate.set(year, monthOfYear, dayOfMonth);
 
-                TxtCalendar.setText("Tanggal tanam : " + dateFormatter.format(newDate.getTime()));
+                edtDateP.setText("Tanggal tanam : " + dateFormatter.format(newDate.getTime()));
             }
 
         }, newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
@@ -116,10 +114,13 @@ public class AddPlantActivity extends AppCompatActivity {
         datePickerDialog.show();
     }
 
-    @OnClick(R.id.calendar)
-    public void onViewClicked() {
-        showDateDialog();
+    @OnClick({R.id.edtDateP, R.id.btnCreate})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.edtDateP: showDateDialog();
+                break;
+            case R.id.btnCreate:
+                break;
+        }
     }
-
-
 }

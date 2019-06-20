@@ -6,9 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.example.nutplant.Main2Activity;
 import com.example.nutplant.R;
-import com.example.nutplant.MainActivity;
 import com.example.nutplant.feature.auth.login.LoginActivity;
+import com.example.nutplant.feature.manage.ManageActivity;
 import com.example.nutplant.utils.SessionManager;
 
 public class SplashScreenActivity extends AppCompatActivity {
@@ -28,7 +29,7 @@ public class SplashScreenActivity extends AppCompatActivity {
             public void run() {
                 if (sessionManager.isLogin())
                 {
-                    Intent login = new Intent (SplashScreenActivity.this, MainActivity.class);
+                    Intent login = new Intent (SplashScreenActivity.this, ManageActivity.class);
                     startActivity(login);
                 }
                 else{

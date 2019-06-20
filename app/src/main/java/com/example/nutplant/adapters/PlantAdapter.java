@@ -1,13 +1,16 @@
 package com.example.nutplant.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.nutplant.Main2Activity;
 import com.example.nutplant.R;
+import com.example.nutplant.feature.manage.ManageActivity;
 import com.example.nutplant.model.DataPlant;
 
 import java.text.DateFormat;
@@ -19,6 +22,7 @@ import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -49,8 +53,17 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.MyViewHolder
         final DataPlant plant = plants.get(position);
 
         holder.namaplant.setText(plant.getNamaTanaman());
-        holder.luaslahan.setText(String.valueOf(plant.getLuasLahan()));
-        holder.lokasilahan.setText(plant.getLokasiLahan());
+//        holder.luaslahan.setText(String.valueOf(plant.getLuasLahan()));
+//        holder.lokasilahan.setText(plant.getLokasiLahan());
+
+        holder.daftarplant.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, Main2Activity.class);
+                intent.putExtra("plant", plant);
+                context.startActivity(intent);
+            }
+        });
 
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Calendar calendar = Calendar.getInstance();
@@ -82,10 +95,8 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.MyViewHolder
         TextView textView3;
         @BindView(R.id.umurplant)
         TextView umurplant;
-        @BindView(R.id.luaslahan)
-        TextView luaslahan;
-        @BindView(R.id.lokasilahan)
-        TextView lokasilahan;
+        @BindView(R.id.Daftarplant)
+        ConstraintLayout daftarplant;
 
         MyViewHolder(View itemView) {
             super(itemView);

@@ -1,9 +1,12 @@
 package com.example.nutplant.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class DataPlant {
+public class DataPlant implements Parcelable {
 
     @SerializedName("_id")
     @Expose
@@ -105,4 +108,48 @@ public class DataPlant {
         this.v = v;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.id);
+        dest.writeString(this.idFarmer);
+        dest.writeString(this.namaTanaman);
+        dest.writeValue(this.luasLahan);
+        dest.writeString(this.lokasiLahan);
+        dest.writeString(this.spesies);
+        dest.writeString(this.tanggal);
+        dest.writeParcelable(this.perangkat, flags);
+        dest.writeValue(this.v);
+    }
+
+    public DataPlant() {
+    }
+
+    protected DataPlant(Parcel in) {
+        this.id = in.readString();
+        this.idFarmer = in.readString();
+        this.namaTanaman = in.readString();
+        this.luasLahan = (Double) in.readValue(Double.class.getClassLoader());
+        this.lokasiLahan = in.readString();
+        this.spesies = in.readString();
+        this.tanggal = in.readString();
+        this.perangkat = in.readParcelable(Perangkat.class.getClassLoader());
+        this.v = (Integer) in.readValue(Integer.class.getClassLoader());
+    }
+
+    public static final Parcelable.Creator<DataPlant> CREATOR = new Parcelable.Creator<DataPlant>() {
+        @Override
+        public DataPlant createFromParcel(Parcel source) {
+            return new DataPlant(source);
+        }
+
+        @Override
+        public DataPlant[] newArray(int size) {
+            return new DataPlant[size];
+        }
+    };
 }
