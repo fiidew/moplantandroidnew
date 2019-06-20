@@ -56,25 +56,30 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.MyViewHolder
 //        holder.luaslahan.setText(String.valueOf(plant.getLuasLahan()));
 //        holder.lokasilahan.setText(plant.getLokasiLahan());
 
-        holder.daftarplant.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, Main2Activity.class);
-                intent.putExtra("plant", plant);
-                context.startActivity(intent);
-            }
-        });
+        String plantAge = "";
 
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Calendar calendar = Calendar.getInstance();
         try {
             Date date = dateFormat.parse(plant.getTanggal().substring(0, 10));
             Date now = calendar.getTime();
-            long umur = Math.abs(date.getTime() - now.getTime());
-            holder.umurplant.setText(String.valueOf(TimeUnit.MILLISECONDS.toDays(umur)));
+            long age = Math.abs(date.getTime() - now.getTime());
+            plantAge = String.valueOf(TimeUnit.MILLISECONDS.toDays(age));
+            holder.umurplant.setText(plantAge);
         } catch (ParseException e) {
             e.printStackTrace();
         }
+
+        String finalPlantAge = plantAge;
+        holder.daftarplant.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, Main2Activity.class);
+                intent.putExtra("plant", plant);
+                intent.putExtra("umur", finalPlantAge);
+                context.startActivity(intent);
+            }
+        });
 
     }
 

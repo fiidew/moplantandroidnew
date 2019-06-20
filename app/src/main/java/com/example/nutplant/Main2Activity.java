@@ -1,14 +1,26 @@
 package com.example.nutplant;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.nutplant.feature.auth.register.RegisterActivity;
+import com.example.nutplant.model.DataPlant;
+import com.example.nutplant.model.Plant;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 
 import androidx.appcompat.app.AppCompatActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class Main2Activity extends AppCompatActivity {
+
+    private ArrayList<DataPlant> plants;
 
     @BindView(R.id.selectedPlant)
     TextView selectedPlant;
@@ -52,11 +64,35 @@ public class Main2Activity extends AppCompatActivity {
     TextView textView14;
     @BindView(R.id.textView15)
     TextView textView15;
+    @BindView(R.id.txtTahun)
+    TextView txtTahun;
+
+    DataPlant plant;
+    String umur;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
         ButterKnife.bind(this);
+
+        plant = getIntent().getParcelableExtra("plant");
+        umur = getIntent().getStringExtra("umur");
+
+        Date date = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE-dd-MMMM-yyyy");
+        String[] tanggal = dateFormat.format(date).split("-");
+
+        textView2.setText(tanggal[1]);
+        textView4.setText(tanggal[2]);
+        textView.setText(tanggal[0]);
+        txtTahun.setText(tanggal[3]);
+
+        selectedArea.setText("Area of field "+(String.valueOf(plant.getLuasLahan()))+ "m x m");
+        selectedPlant.setText(plant.getNamaTanaman());
+        selectedSpecies.setText("Species "+ plant.getSpesies());
+        selectedAge.setText("Plant Age "+umur+ " Days");
+
     }
+
 }

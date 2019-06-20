@@ -61,6 +61,7 @@ public class DataPlant implements Parcelable {
     }
 
     public Double getLuasLahan() {
+
         return luasLahan;
     }
 

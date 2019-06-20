@@ -1,4 +1,4 @@
-package com.example.nutplant;
+package com.example.nutplant.feature.manage.create;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.example.nutplant.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Arrays;

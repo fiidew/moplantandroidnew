@@ -14,7 +14,7 @@
         android:usesCleartextTraffic="true">
         <activity android:name=".Main2Activity"></activity>
         <activity android:name=".feature.auth.register.RegisterActivity" />
-        <activity android:name=".AddPlantActivity" />
+        <activity android:name=".feature.manage.create.AddPlantActivity" />
         <activity android:name=".feature.manage.ManageActivity" />
         <activity android:name=".feature.auth.login.LoginActivity" />
         <activity android:name=".feature.splash.SplashScreenActivity">

@@ -5,13 +5,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.example.nutplant.AddPlantActivity;
+import com.example.nutplant.feature.manage.create.AddPlantActivity;
 import com.example.nutplant.R;
 import com.example.nutplant.adapters.PlantAdapter;
-import com.example.nutplant.feature.auth.register.RegisterContract;
-import com.example.nutplant.feature.auth.register.RegisterPresenter;
 import com.example.nutplant.model.DataPlant;
-import com.example.nutplant.model.Plant;
 import com.example.nutplant.utils.SessionManager;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
