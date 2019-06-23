@@ -2,16 +2,21 @@ package com.example.nutplant.feature.manage.create;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.nutplant.R;
+import com.example.nutplant.utils.SessionManager;
 
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -25,7 +30,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class AddPlantActivity extends AppCompatActivity {
+public class AddPlantActivity extends AppCompatActivity implements AddPlantContract.View  {
 
     @BindView(R.id.textView5)
     TextView textView5;
@@ -42,11 +47,16 @@ public class AddPlantActivity extends AppCompatActivity {
     @BindView(R.id.btnCreate)
     Button btnCreate;
 
+    ProgressDialog dialog;
+
     private Context mContext;
     private Activity mActivity;
 
+    AddPlantContract.Presenter presenter;
     private DatePickerDialog datePickerDialog;
     private SimpleDateFormat dateFormatter;
+
+    SessionManager sessionManager;
 
     private CoordinatorLayout mCLayout;
 
@@ -55,6 +65,14 @@ public class AddPlantActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_plant);
         ButterKnife.bind(this);
+
+        presenter = new AddPlantPresenter(this);
+        sessionManager = new SessionManager(this);
+
+        dialog = new ProgressDialog(this);
+        dialog.setMessage("Loading");
+        dialog.setCancelable(false);
+        dialog.setTitle("Add plant");
 
         edtSpeciesP.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,7 +111,7 @@ public class AddPlantActivity extends AppCompatActivity {
             }
         });
 
-        dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
+        dateFormatter = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
     }
 
     private void showDateDialog() {
@@ -108,7 +126,7 @@ public class AddPlantActivity extends AppCompatActivity {
                 Calendar newDate = Calendar.getInstance();
                 newDate.set(year, monthOfYear, dayOfMonth);
 
-                edtDateP.setText("Tanggal tanam : " + dateFormatter.format(newDate.getTime()));
+                edtDateP.setText(dateFormatter.format(newDate.getTime()));
             }
 
         }, newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
@@ -122,7 +140,59 @@ public class AddPlantActivity extends AppCompatActivity {
             case R.id.edtDateP: showDateDialog();
                 break;
             case R.id.btnCreate:
+                attachAddplant(edtNameP.getText().toString() ,edtAreaP.getText().toString(), edtSpeciesP.getText().toString() ,edtLocationP.getText().toString(), edtDateP.getText().toString());
                 break;
         }
+
+    }
+
+
+    private void attachAddplant(String namaTanaman, String luasLahan, String lokasiLahan, String spesies, String tanggal) {
+        String namaTanamanError = null;
+        String luasLahanError = null;
+        String lokasiLahanError = null;
+        String spesiesError = null;
+        String tanggalError = null;
+
+        if (TextUtils.isEmpty(namaTanaman))
+            namaTanamanError = "Name cannot be empty";
+
+        if (TextUtils.isEmpty(luasLahan))
+            luasLahanError = "Area of field cannot be empty";
+
+        if (TextUtils.isEmpty(lokasiLahan))
+            lokasiLahanError = "Location field cannot be empty";
+
+        if (TextUtils.isEmpty(spesies))
+            spesiesError = "Species cannot be empty";
+
+        if (TextUtils.isEmpty(tanggal))
+            tanggalError = "Date cannot be empty";
+
+
+        if (namaTanamanError == null && luasLahanError == null && lokasiLahanError == null && spesiesError == null && tanggalError == null)
+            presenter.create(sessionManager.getToken(), namaTanaman, Double.parseDouble(luasLahan), lokasiLahan, spesies, tanggal);
+        else {
+            edtNameP.setError(namaTanamanError);
+            edtAreaP.setError(luasLahanError);
+            edtLocationP.setError(lokasiLahanError);
+            edtSpeciesP.setError(spesiesError);
+            edtDateP.setError(tanggalError);
+        }
+    }
+
+    @Override
+    public void create(boolean isSucces, String message) {
+        if (isSucces) {
+            finish();
+        }
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void showLoading(boolean show) {
+        if (show) dialog.show();
+        else dialog.cancel(); //or u can use dismiss
+
     }
 }

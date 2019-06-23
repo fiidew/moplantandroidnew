@@ -1,8 +1,11 @@
 package com.example.nutplant.feature.manage;
 
 import android.app.ProgressDialog;
+import android.content.ClipData;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.nutplant.feature.manage.create.AddPlantActivity;
@@ -11,6 +14,7 @@ import com.example.nutplant.adapters.PlantAdapter;
 import com.example.nutplant.model.DataPlant;
 import com.example.nutplant.utils.SessionManager;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 
@@ -31,7 +35,14 @@ public class ManageActivity extends AppCompatActivity implements ManageContract.
     SessionManager sessionManager;
 
     private PlantAdapter adapter;
+    private ArrayList<DataPlant> plants;
     public ManageActivity() {
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        presenter.getPlants(sessionManager.getToken());
     }
 
     @Override
@@ -53,7 +64,7 @@ public class ManageActivity extends AppCompatActivity implements ManageContract.
         managePlant.setHasFixedSize(false);
         managePlant.setAdapter(adapter);
 
-        presenter.getPlants(sessionManager.getToken());
+
     }
 
     @Override
@@ -77,4 +88,5 @@ public class ManageActivity extends AppCompatActivity implements ManageContract.
     public void onViewClicked() {
         startActivity(new Intent(this, AddPlantActivity.class));
     }
+
 }

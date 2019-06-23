@@ -1,6 +1,7 @@
 package com.example.nutplant.service;
 
 import com.example.nutplant.model.Plant;
+import com.example.nutplant.model.ResponseAddplant;
 import com.example.nutplant.model.ResponseShowplant;
 import com.example.nutplant.model.User;
 
@@ -20,10 +21,12 @@ public interface PlantService {
 
     @FormUrlEncoded
     @POST(ApiURL.CREATE)
-    Call<ResponseShowplant> createplants(
-            @Field("nama") String nama,
-            @Field("species") String species,
-            @Field("date") String date,
-            @Field("area") Float area
+    Call<ResponseAddplant> createplants(
+            @Header("Authorization") String token,
+            @Field("namaTanaman") String namaTanaman,
+            @Field("luasLahan") Double luasLahan,
+            @Field("lokasiLahan") String lokasiLahan,
+            @Field("spesies") String spesies,
+            @Field("tanggal") String tanggal
     );
 }

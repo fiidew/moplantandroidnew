@@ -71,7 +71,7 @@ public class RegisterActivity extends Activity implements RegisterContract.View 
             namaError = "Alamat cannot be empty";
 
         if (TextUtils.isEmpty(username))
-            usernameError = "Username gaboleh kosong dong";
+            usernameError = "Username cannot be empty";
 
         if (password.length() < 6)
             passwordError = "Password min 6 character";

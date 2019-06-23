@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 import com.example.nutplant.Main2Activity;
 import com.example.nutplant.R;
-import com.example.nutplant.feature.manage.ManageActivity;
 import com.example.nutplant.model.DataPlant;
 
 import java.text.DateFormat;
@@ -88,7 +87,7 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.MyViewHolder
         return plants.size();
     }
 
-    class MyViewHolder extends RecyclerView.ViewHolder {
+    public  class MyViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.imageView2)
         ImageView imageView2;
@@ -101,11 +100,13 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.MyViewHolder
         @BindView(R.id.umurplant)
         TextView umurplant;
         @BindView(R.id.Daftarplant)
-        ConstraintLayout daftarplant;
+        public ConstraintLayout daftarplant;
 
         MyViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
     }
+
+
 }
