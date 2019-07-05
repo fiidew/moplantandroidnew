@@ -17,9 +17,9 @@ public class DataPerangkat implements Parcelable {
     @SerializedName("kelembabanTanah")
     @Expose
     private Integer kelembabanTanah;
-    @SerializedName("ph")
-    @Expose
-    private Integer ph;
+//    @SerializedName("ph")
+//    @Expose
+//    private Integer ph;
     @SerializedName("kelembabanUdara")
     @Expose
     private Integer kelembabanUdara;
@@ -28,7 +28,7 @@ public class DataPerangkat implements Parcelable {
     private Integer suhuUdara;
     @SerializedName("kondisi")
     @Expose
-    private Integer kondisi;
+    private Double kondisi;
 
     public String getId() {
         return id;
@@ -54,13 +54,13 @@ public class DataPerangkat implements Parcelable {
         this.kelembabanTanah = kelembabanTanah;
     }
 
-    public Integer getPh() {
-        return ph;
-    }
-
-    public void setPh(Integer ph) {
-        this.ph = ph;
-    }
+//    public Integer getPh() {
+//        return ph;
+//    }
+//
+//    public void setPh(Integer ph) {
+//        this.ph = ph;
+//    }
 
     public Integer getKelembabanUdara() {
         return kelembabanUdara;
@@ -78,11 +78,11 @@ public class DataPerangkat implements Parcelable {
         this.suhuUdara = suhuUdara;
     }
 
-    public Integer getKondisi() {
+    public Double getKondisi() {
         return kondisi;
     }
 
-    public void setKondisi(Integer kondisi) {
+    public void setKondisi(Double kondisi) {
         this.kondisi = kondisi;
     }
 
@@ -96,7 +96,7 @@ public class DataPerangkat implements Parcelable {
         dest.writeString(this.id);
         dest.writeString(this.tanggal);
         dest.writeValue(this.kelembabanTanah);
-        dest.writeValue(this.ph);
+//        dest.writeValue(this.ph);
         dest.writeValue(this.kelembabanUdara);
         dest.writeValue(this.suhuUdara);
         dest.writeValue(this.kondisi);
@@ -109,10 +109,10 @@ public class DataPerangkat implements Parcelable {
         this.id = in.readString();
         this.tanggal = in.readString();
         this.kelembabanTanah = (Integer) in.readValue(Integer.class.getClassLoader());
-        this.ph = (Integer) in.readValue(Integer.class.getClassLoader());
+//        this.ph = (Integer) in.readValue(Integer.class.getClassLoader());
         this.kelembabanUdara = (Integer) in.readValue(Integer.class.getClassLoader());
         this.suhuUdara = (Integer) in.readValue(Integer.class.getClassLoader());
-        this.kondisi = (Integer) in.readValue(Integer.class.getClassLoader());
+        this.kondisi = (Double) in.readValue(Double.class.getClassLoader());
     }
 
     public static final Parcelable.Creator<DataPerangkat> CREATOR = new Parcelable.Creator<DataPerangkat>() {

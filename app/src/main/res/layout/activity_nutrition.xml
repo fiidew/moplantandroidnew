@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".feature.auth.nutrisi.NutritionActivity">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_rekomendasi"
+        android:orientation="vertical"
+        android:weightSum="3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="12dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="138dp"
+                    android:layout_height="116dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="12dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:srcCompat="@drawable/pupuk" />
+
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="12dp"
+                    android:text="Status of Nutrient"
+                    app:layout_constraintStart_toEndOf="@+id/imageView4"
+                    app:layout_constraintTop_toTopOf="@+id/imageView4" />
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_margin="5dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/colorAccent"
+                    android:text="   Optimal   "
+                    android:textColor="@android:color/white"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toStartOf="@+id/textView9"
+                    app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+                <TextView
+                    android:id="@+id/historylink"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="See log recommendation"
+                    android:textColor="@color/colorAccent"
+                    app:layout_constraintStart_toStartOf="@+id/textView9"
+                    app:layout_constraintTop_toBottomOf="@+id/textView7" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="24dp"
+            tools:layout_editor_absoluteX="24dp"
+            tools:layout_editor_absoluteY="189dp">
+
+
+            <TextView
+                android:id="@+id/textView196"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="Condition of Nutrients :"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/nitrogen"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="20dp"
+                android:text="Nitrogen        :"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/textView196"
+                app:layout_constraintTop_toBottomOf="@+id/textView196" />
+
+            <TextView
+                android:id="@+id/phosporus"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginTop="16dp"
+                android:text="Phosporus    :"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/nitrogen"
+                app:layout_constraintTop_toBottomOf="@+id/nitrogen" />
+
+            <TextView
+                android:id="@+id/potassium"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginTop="16dp"
+                android:text="Potassium    :"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/phosporus"
+                app:layout_constraintTop_toBottomOf="@+id/phosporus" />
+
+            <TextView
+                android:id="@+id/sulphur"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginTop="25dp"
+                android:text="Sulphur          :"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/potassium"
+                app:layout_constraintTop_toBottomOf="@+id/potassium" />
+
+            <TextView
+                android:id="@+id/calcium"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginTop="16dp"
+                android:text="Calcium         :"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/sulphur"
+                app:layout_constraintTop_toBottomOf="@+id/sulphur" />
+
+            <TextView
+                android:id="@+id/magnesium"
+                android:layout_width="wrap_content"
+                android:layout_height="22dp"
+                android:layout_marginTop="12dp"
+                android:text="Magnesium  :"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/calcium"
+                app:layout_constraintTop_toBottomOf="@+id/calcium" />
+
+            <TextView
+                android:id="@+id/magnesium6"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginTop="24dp"
+                android:text="Iron                 :"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/magnesium"
+                app:layout_constraintTop_toBottomOf="@+id/magnesium" />
+
+            <TextView
+                android:id="@+id/magnesium8"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginTop="16dp"
+                android:text="Manganese  :"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/magnesium6"
+                app:layout_constraintTop_toBottomOf="@+id/magnesium6" />
+
+            <TextView
+                android:id="@+id/magnesium9"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginTop="16dp"
+                android:text="Boron             :"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/magnesium8"
+                app:layout_constraintTop_toBottomOf="@+id/magnesium8" />
+
+            <TextView
+                android:id="@+id/magnesium10"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginTop="16dp"
+                android:text="Copper Zinc:"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/magnesium9"
+                app:layout_constraintTop_toBottomOf="@+id/magnesium9" />
+
+            <TextView
+                android:id="@+id/magnesium2"
+                android:layout_width="wrap_content"
+                android:layout_height="26dp"
+                android:layout_marginStart="8dp"
+                android:text="High"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@+id/statusNitrogen3"
+                app:layout_constraintTop_toTopOf="@+id/statusNitrogen3" />
+
+            <TextView
+                android:id="@+id/magnesium3"
+                android:layout_width="wrap_content"
+                android:layout_height="26dp"
+                android:layout_marginStart="8dp"
+                android:text="Medium"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@+id/statusNitrogen4"
+                app:layout_constraintTop_toTopOf="@+id/statusNitrogen4" />
+
+            <TextView
+                android:id="@+id/magnesium4"
+                android:layout_width="wrap_content"
+                android:layout_height="26dp"
+                android:layout_marginStart="8dp"
+                android:text="Low"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@+id/statusNitrogen6"
+                app:layout_constraintTop_toTopOf="@+id/statusNitrogen6" />
+
+            <TextView
+                android:id="@+id/statusNitrogen"
+                android:layout_width="130dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="8dp"
+                android:background="@color/colorPrimary"
+                android:textSize="15sp"
+                app:layout_constraintStart_toEndOf="@+id/nitrogen"
+                app:layout_constraintTop_toTopOf="@+id/nitrogen" />
+
+            <TextView
+                android:id="@+id/statusNitrogen3"
+                android:layout_width="wrap_content"
+                android:layout_height="21dp"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="36dp"
+                android:background="@color/colorPrimary"
+                android:text="     "
+                android:textColor="@android:color/white"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="@+id/magnesium10"
+                app:layout_constraintTop_toBottomOf="@+id/magnesium10" />
+
+            <TextView
+                android:id="@+id/statusNitrogen4"
+                android:layout_width="wrap_content"
+                android:layout_height="21dp"
+                android:layout_marginStart="30dp"
+                android:background="@color/colorPrimary"
+                android:text="     "
+                android:textColor="@android:color/white"
+                android:textSize="15sp"
+                app:layout_constraintStart_toEndOf="@+id/magnesium2"
+                app:layout_constraintTop_toTopOf="@+id/magnesium2" />
+
+            <TextView
+                android:id="@+id/statusNitrogen5"
+                android:layout_width="wrap_content"
+                android:layout_height="21dp"
+                android:layout_marginStart="30dp"
+                android:background="@color/colorOne"
+                android:text="     "
+                android:textColor="@android:color/white"
+                android:textSize="15sp"
+                app:layout_constraintStart_toEndOf="@+id/magnesium2"
+                app:layout_constraintTop_toTopOf="@+id/magnesium2" />
+
+            <TextView
+                android:id="@+id/statusNitrogen6"
+                android:layout_width="wrap_content"
+                android:layout_height="21dp"
+                android:layout_marginStart="30dp"
+                android:background="@color/colorFour"
+                android:text="     "
+                android:textColor="@android:color/white"
+                android:textSize="15sp"
+                app:layout_constraintStart_toEndOf="@+id/magnesium3"
+                app:layout_constraintTop_toTopOf="@+id/magnesium3" />
+
+            <TextView
+                android:id="@+id/statusPhosporus"
+                android:layout_width="130dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="16dp"
+                android:background="@color/colorOne"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="@+id/statusNitrogen"
+                app:layout_constraintTop_toBottomOf="@+id/statusNitrogen" />
+
+            <TextView
+                android:id="@+id/statusSulphur"
+                android:layout_width="130dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="8dp"
+                android:background="@color/colorOne"
+                android:textSize="15sp"
+                app:layout_constraintStart_toEndOf="@+id/sulphur"
+                app:layout_constraintTop_toTopOf="@+id/sulphur" />
+
+            <TextView
+                android:id="@+id/statusCalcium"
+                android:layout_width="130dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="16dp"
+                android:background="@color/colorOne"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="@+id/statusSulphur"
+                app:layout_constraintTop_toBottomOf="@+id/statusSulphur" />
+
+            <TextView
+                android:id="@+id/statusCalcium2"
+                android:layout_width="130dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="16dp"
+                android:background="@color/colorOne"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="@+id/statusCalcium"
+                app:layout_constraintTop_toBottomOf="@+id/statusCalcium" />
+
+            <TextView
+                android:id="@+id/statusCalcium3"
+                android:layout_width="130dp"
+                android:layout_height="20dp"
+                android:background="@color/colorOne"
+                android:textColor="@android:color/white"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="@+id/statusCalcium2"
+                app:layout_constraintTop_toTopOf="@+id/magnesium6" />
+
+            <TextView
+                android:id="@+id/statusCalcium4"
+                android:layout_width="130dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="16dp"
+                android:background="@color/colorOne"
+                android:textColor="@android:color/white"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="@+id/statusCalcium3"
+                app:layout_constraintTop_toBottomOf="@+id/statusCalcium3" />
+
+            <TextView
+                android:id="@+id/statusCalcium5"
+                android:layout_width="130dp"
+                android:layout_height="20dp"
+                android:background="@color/colorOne"
+                android:textColor="@android:color/white"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="@+id/statusCalcium4"
+                app:layout_constraintTop_toTopOf="@+id/magnesium9" />
+
+            <TextView
+                android:id="@+id/statusCalcium6"
+                android:layout_width="130dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="16dp"
+                android:background="@color/colorOne"
+                android:textColor="@android:color/white"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="@+id/statusCalcium5"
+                app:layout_constraintTop_toBottomOf="@+id/statusCalcium5" />
+
+            <TextView
+                android:id="@+id/statusPotassium"
+                android:layout_width="130dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="16dp"
+                android:background="@color/colorPrimary"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="@+id/statusPhosporus"
+                app:layout_constraintTop_toBottomOf="@+id/statusPhosporus" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

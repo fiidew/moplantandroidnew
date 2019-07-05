@@ -2,24 +2,26 @@ package com.example.nutplant;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.nutplant.feature.auth.register.RegisterActivity;
+import com.example.nutplant.feature.auth.nutrisi.NutritionActivity;
 import com.example.nutplant.model.DataPlant;
-import com.example.nutplant.model.Plant;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class Main2Activity extends AppCompatActivity {
 
+    @BindView(R.id.pupukpage)
+    CardView pupukpage;
     private ArrayList<DataPlant> plants;
 
     @BindView(R.id.selectedPlant)
@@ -88,11 +90,15 @@ public class Main2Activity extends AppCompatActivity {
         textView.setText(tanggal[0]);
         txtTahun.setText(tanggal[3]);
 
-        selectedArea.setText("Area of field "+(String.valueOf(plant.getLuasLahan()))+ "m x m");
+        selectedArea.setText("Area of field " + (String.valueOf(plant.getLuasLahan())) + "m x m");
         selectedPlant.setText(plant.getNamaTanaman());
-        selectedSpecies.setText("Species "+ plant.getSpesies());
-        selectedAge.setText("Plant Age "+umur+ " Days");
+        selectedSpecies.setText("Species " + plant.getSpesies());
+        selectedAge.setText("Plant Age " + umur + " Days");
 
     }
 
+    @OnClick(R.id.pupukpage)
+    public void onViewClicked() {
+        startActivity(new Intent(this, NutritionActivity.class));
+    }
 }

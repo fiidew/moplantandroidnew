@@ -6,5 +6,8 @@
     <color name="colorOne">#FFCB03</color>
     <color name="colorTwo">#240C00</color>
     <color name="colorThree">#5BA39D</color>
+    <color name="colorFour">#F44336</color>
+    <color name="colorFive">#9AB3EB6D</color>
+
 
 </resources>

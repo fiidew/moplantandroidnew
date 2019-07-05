@@ -70,7 +70,7 @@ public class ManageActivity extends AppCompatActivity implements ManageContract.
     @Override
     public void read(ArrayList<DataPlant> plants, String message) {
         if (plants != null){
-//            adapter.getAll().clear();
+            adapter.getAll().clear();
             adapter.getAll().addAll(plants);
             adapter.notifyDataSetChanged();
         }else{
