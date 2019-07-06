@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".feature.manage.detailplant.DetailPlantActivity">
+    tools:context=".Main2Activity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -56,32 +56,22 @@
                         android:text="Species Kangkung"
                         android:textSize="16sp" />
 
-                    <!--<TextView-->
-                        <!--android:id="@+id/selectedAge"-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_marginTop="10dp"-->
-                        <!--android:text="Plant age 12 Days"-->
-                        <!--android:textSize="16sp" />-->
+                    <TextView
+                        android:id="@+id/selectedAge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Plant age 12 Days"
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/selectedArea"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text="Area of field 120 m x m"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:id="@+id/selectedLocation"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
                         android:layout_marginBottom="20dp"
                         android:text="Area of field 120 m x m"
                         android:textSize="16sp" />
-
-
                 </LinearLayout>
 
 
@@ -101,7 +91,7 @@
                     android:layout_marginBottom="20dp">
 
                     <TextView
-                        android:id="@+id/weatherLastUpdate"
+                        android:id="@+id/textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
@@ -112,34 +102,34 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <!--<TextView-->
-                        <!--android:id="@+id/textView4"-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_marginStart="8dp"-->
-                        <!--android:layout_marginTop="8dp"-->
-                        <!--android:text="Mei"-->
-                        <!--app:layout_constraintStart_toEndOf="@+id/textView2"-->
-                        <!--app:layout_constraintTop_toBottomOf="@+id/weatherLastUpdate" />-->
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:text="Mei"
+                        app:layout_constraintStart_toEndOf="@+id/textView2"
+                        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-                    <!--<TextView-->
-                        <!--android:id="@+id/txtTahun"-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_marginTop="8dp"-->
-                        <!--android:text="2019"-->
-                        <!--app:layout_constraintStart_toStartOf="@+id/textView4"-->
-                        <!--app:layout_constraintTop_toBottomOf="@+id/textView4" />-->
+                    <TextView
+                        android:id="@+id/txtTahun"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="2019"
+                        app:layout_constraintStart_toStartOf="@+id/textView4"
+                        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
                     <TextView
                         android:id="@+id/textView2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text=" "
+                        android:text="03"
                         android:textSize="36sp"
-                        app:layout_constraintStart_toStartOf="@+id/weatherLastUpdate"
-                        app:layout_constraintTop_toBottomOf="@+id/weatherLastUpdate" />
+                        app:layout_constraintStart_toStartOf="@+id/textView"
+                        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
                     <TextView
                         android:id="@+id/textView6"
@@ -182,7 +172,7 @@
                         app:layout_constraintTop_toTopOf="@+id/imageView3" />
 
                     <ImageView
-                        android:id="@+id/weatherImg"
+                        android:id="@+id/planticon"
                         android:layout_width="90dp"
                         android:layout_height="40dp"
                         android:layout_gravity="right"
@@ -193,18 +183,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/weatherCondition"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="2dp"
-                        android:layout_marginEnd="24dp"
-                        android:text="Sedati, Sidoarjo"
-                        android:textSize="16sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/weatherImg" />
-
-                    <TextView
-                        android:id="@+id/weatherLocation"
+                        android:id="@+id/selectedLocation"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
@@ -213,15 +192,13 @@
                         android:text="Sedati, Sidoarjo"
                         android:textSize="16sp"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/weatherCondition" />
-
+                        app:layout_constraintTop_toBottomOf="@+id/planticon" />
 
                     <ImageView
                         android:id="@+id/imageView5"
                         android:layout_width="22dp"
                         android:layout_height="34dp"
-                        android:layout_marginLeft="40dp"
-                        app:layout_constraintStart_toStartOf="@+id/weatherLocation"
+                        app:layout_constraintStart_toStartOf="@+id/selectedLocation"
                         app:layout_constraintTop_toTopOf="@+id/imageView3"
                         app:srcCompat="@drawable/icon_status_pupuk" />
 
@@ -298,7 +275,6 @@
                                     android:text="Moisture" />
 
                                 <TextView
-                                    android:id="@+id/currentSoilMoisture"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
@@ -326,10 +302,9 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:layout_marginTop="10dp"
-                                    android:text="Total Precipitation" />
+                                    android:text="Rain Drops" />
 
                                 <TextView
-                                    android:id="@+id/currentPrecipitation"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
@@ -360,7 +335,6 @@
                                     android:text="pH" />
 
                                 <TextView
-                                    android:id="@+id/currentPh"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
