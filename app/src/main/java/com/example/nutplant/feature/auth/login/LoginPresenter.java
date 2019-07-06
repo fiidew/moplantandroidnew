@@ -3,6 +3,7 @@ package com.example.nutplant.feature.auth.login;
 import android.content.Context;
 
 import com.example.nutplant.model.ResponseLogin;
+import com.example.nutplant.model.ResponseUserUpdate;
 import com.example.nutplant.service.ApiClient;
 import com.example.nutplant.service.AuthService;
 import com.example.nutplant.utils.SessionManager;
@@ -48,6 +49,35 @@ public class LoginPresenter implements LoginContract.Presenter {
             public void onFailure(Call<ResponseLogin> call, Throwable t) {
                 view.showLoading(false);
                 call.cancel();
+            }
+        });
+    }
+
+
+    public void updateToken(String token, String id, String fcmtoken) {
+        view.showLoading(true);
+        Call<ResponseUserUpdate> login = service.updateUser(token,id,fcmtoken);
+        login.enqueue(new Callback<ResponseUserUpdate>() {
+            @Override
+            public void onResponse(Call<ResponseUserUpdate> call, Response<ResponseUserUpdate> response) {
+                view.showLoading(false);
+                if (response.code() == 200){
+                    ResponseUserUpdate data = response.body();
+                    if (data.getStatus()) {
+                        view.isSuccessUpdateToken(true, "Login success");
+                    }else
+                        view.isSuccessUpdateToken(false, response.body().getMessage());
+                }else{
+                    view.isSuccessUpdateToken(false, "Login failed : " + response.message());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseUserUpdate> call, Throwable t) {
+                view.showLoading(false);
+                call.cancel();
+                view.isSuccessUpdateToken(false, "Login failed : " + t.getMessage());
+
             }
         });
     }

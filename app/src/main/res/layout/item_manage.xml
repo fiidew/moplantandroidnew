@@ -8,7 +8,7 @@
     android:orientation="vertical"
     app:cardCornerRadius="10dp"
     app:cardElevation="5dp"
-    app:contentPadding="16dp">
+    app:contentPadding="10dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/Daftarplant"
@@ -22,7 +22,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            android:src="@drawable/icon_add_plant"
+            android:src="@drawable/plant"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -44,30 +44,40 @@
             android:id="@+id/speciesplant"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="1dp"
             android:text="Sawi Hijau"
             android:textSize="15sp"
             app:layout_constraintStart_toStartOf="@+id/namaplant"
             app:layout_constraintTop_toBottomOf="@+id/namaplant" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/largeplant"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:text="Day"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/namaplant" />
+            android:layout_marginTop="1dp"
+            android:text="Sawi Hijau"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="@+id/speciesplant"
+            app:layout_constraintTop_toBottomOf="@+id/speciesplant" />
 
-        <TextView
-            android:id="@+id/umurplant"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="12 Day"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/speciesplant"
-            app:layout_constraintEnd_toEndOf="@+id/textView3" />
+        <!--<TextView-->
+            <!--android:id="@+id/textView3"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginEnd="16dp"-->
+            <!--android:text="Day"-->
+            <!--app:layout_constraintEnd_toEndOf="parent"-->
+            <!--app:layout_constraintTop_toTopOf="@+id/namaplant" />-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/umurplant"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="12 Day"-->
+            <!--android:textSize="16sp"-->
+            <!--android:textStyle="bold"-->
+            <!--app:layout_constraintBottom_toBottomOf="@+id/speciesplant"-->
+            <!--app:layout_constraintEnd_toEndOf="@+id/textView3" />-->
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

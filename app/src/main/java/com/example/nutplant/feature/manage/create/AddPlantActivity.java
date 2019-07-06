@@ -111,7 +111,7 @@ public class AddPlantActivity extends AppCompatActivity implements AddPlantContr
             }
         });
 
-        dateFormatter = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+        dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
     }
 
     private void showDateDialog() {
@@ -121,15 +121,16 @@ public class AddPlantActivity extends AppCompatActivity implements AddPlantContr
         datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
 
             @Override
-            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+//            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+            public void onDateSet(DatePicker view, int dayOfMonth, int monthOfYear, int year) {
 
                 Calendar newDate = Calendar.getInstance();
-                newDate.set(year, monthOfYear, dayOfMonth);
+                newDate.set(dayOfMonth, monthOfYear, year);
 
                 edtDateP.setText(dateFormatter.format(newDate.getTime()));
             }
 
-        }, newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
+        }, newCalendar.get(Calendar.DAY_OF_MONTH), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.YEAR));
 
         datePickerDialog.show();
     }
@@ -147,7 +148,7 @@ public class AddPlantActivity extends AppCompatActivity implements AddPlantContr
     }
 
 
-    private void attachAddplant(String namaTanaman, String luasLahan, String lokasiLahan, String spesies, String tanggal) {
+    private void attachAddplant(String namaTanaman, String luasLahan, String spesies, String lokasiLahan,  String tanggal) {
         String namaTanamanError = null;
         String luasLahanError = null;
         String lokasiLahanError = null;

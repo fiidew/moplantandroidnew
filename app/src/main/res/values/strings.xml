@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">Nutplant</string>
+    <string name="app_name">Moplant</string>
+    <string name="title_activity_detail_bintang">DetailBintangActivity</string>
 </resources>

@@ -7,5 +7,7 @@ public class ApiURL {
     public static final String UPDATE = "manage/update";
     public static final String DELETE = "manage/delete";
     public static final String GETPLANTS = "api/tanaman/showtanaman";
-
+    public static final String GETDETAILPLANTS = "api/tanaman/{id}/tanamandetail";
+    public static final String GETWEATHERFORECAST = "api/tanaman/{city}/getcuaca";
+    public static final String UPDATEUSER = "api/user/{id}/update";
 }

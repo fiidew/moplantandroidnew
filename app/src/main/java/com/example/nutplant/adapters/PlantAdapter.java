@@ -8,17 +8,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.nutplant.Main2Activity;
+import com.example.nutplant.feature.manage.detailplant.DetailPlantActivity;
 import com.example.nutplant.R;
 import com.example.nutplant.model.DataPlant;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.concurrent.TimeUnit;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -52,30 +46,33 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.MyViewHolder
         final DataPlant plant = plants.get(position);
 
         holder.namaplant.setText(plant.getNamaTanaman());
+        holder.speciesplant.setText("Spesies : " + plant.getSpesies());
+        holder.largeplant.setText("Luas Lahan : " + String.valueOf(plant.getLuasLahan()));
+
 //        holder.luaslahan.setText(String.valueOf(plant.getLuasLahan()));
 //        holder.lokasilahan.setText(plant.getLokasiLahan());
 
-        String plantAge = "";
+//        String plantAge = "";
 
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        Calendar calendar = Calendar.getInstance();
-        try {
-            Date date = dateFormat.parse(plant.getTanggal().substring(0, 10));
-            Date now = calendar.getTime();
-            long age = Math.abs(date.getTime() - now.getTime());
-            plantAge = String.valueOf(TimeUnit.MILLISECONDS.toDays(age));
-            holder.umurplant.setText(plantAge);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+//        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//        Calendar calendar = Calendar.getInstance();
+//        try {
+//            Date date = dateFormat.parse(plant.getTanggal().substring(0, 10));
+//            Date now = calendar.getTime();
+//            long age = Math.abs(date.getTime() - now.getTime());
+//            plantAge = String.valueOf(TimeUnit.MILLISECONDS.toDays(age));
+//            holder.umurplant.setText(plantAge);
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
 
-        String finalPlantAge = plantAge;
+//        String finalPlantAge = plantAge;
         holder.daftarplant.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, Main2Activity.class);
+                Intent intent = new Intent(context, DetailPlantActivity.class);
                 intent.putExtra("plant", plant);
-                intent.putExtra("umur", finalPlantAge);
+//                intent.putExtra("umur", finalPlantAge);
                 context.startActivity(intent);
             }
         });
@@ -95,10 +92,8 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.MyViewHolder
         TextView namaplant;
         @BindView(R.id.speciesplant)
         TextView speciesplant;
-        @BindView(R.id.textView3)
-        TextView textView3;
-        @BindView(R.id.umurplant)
-        TextView umurplant;
+        @BindView(R.id.largeplant)
+        TextView largeplant;
         @BindView(R.id.Daftarplant)
         public ConstraintLayout daftarplant;
 
