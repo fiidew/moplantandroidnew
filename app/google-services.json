@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "608405475895",
+    "firebase_url": "https://android-e71ee.firebaseio.com",
+    "project_id": "android-e71ee",
+    "storage_bucket": "android-e71ee.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:608405475895:android:44c7a158ed9e62b6",
+        "android_client_info": {
+          "package_name": "com.example.nutplant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "608405475895-03rhkm3it653e2e4ro55rvq9imj4lvna.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nutplant",
+            "certificate_hash": "296affd330856f595b4703fb0f74eb655c111e4e"
+          }
+        },
+        {
+          "client_id": "608405475895-l9uea96r3o55v38f0rbrq4aoam4h6566.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQTaoL5R9kME6vKZpfQCUWETDBXFSdwYU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "608405475895-l9uea96r3o55v38f0rbrq4aoam4h6566.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
