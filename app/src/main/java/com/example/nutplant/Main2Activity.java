@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.nutplant.feature.auth.nutrisi.NutritionActivity;
+import com.example.nutplant.feature.nutrisi.NutritionActivity;
 import com.example.nutplant.model.DataPlant;
 
 import java.text.SimpleDateFormat;

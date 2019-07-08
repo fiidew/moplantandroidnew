@@ -15,7 +15,7 @@
         <activity android:name=".NotificationActivity"></activity>
         <activity android:name=".feature.history.item.ItemHistoryActivity" />
         <activity android:name=".feature.history.HistoryActivity" />
-        <activity android:name=".feature.auth.nutrisi.NutritionActivity" />
+        <activity android:name=".feature.nutrisi.NutritionActivity" />
         <activity android:name=".Main2Activity" />
         <activity
             android:name=".feature.manage.detailBintang.DetailBintangActivity"

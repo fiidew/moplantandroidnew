@@ -6,12 +6,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.nutplant.R;
-import com.example.nutplant.feature.auth.register.RegisterActivity;
+import com.example.nutplant.feature.nutrisi.NutritionActivity;
 import com.example.nutplant.feature.manage.detailBintang.DetailBintangActivity;
+import com.example.nutplant.model.DataPerangkat;
 import com.example.nutplant.model.DataPlant;
-import com.example.nutplant.model.Plant;
 import com.example.nutplant.model.ResponseShowDetailPlant;
 import com.example.nutplant.model.weatherModel.ResponseWeather;
 import com.example.nutplant.utils.SessionManager;
@@ -21,26 +22,29 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class DetailPlantActivity extends AppCompatActivity implements DetailPlantContract.View{
-
-    private ArrayList<DataPlant> plants;
+public class DetailPlantActivity extends AppCompatActivity implements DetailPlantContract.View {
 
     @BindView(R.id.selectedPlant)
     TextView selectedPlant;
     @BindView(R.id.selectedSpecies)
     TextView selectedSpecies;
-    @BindView(R.id.selectedLocation)
-    TextView selectedLocation;
     @BindView(R.id.selectedArea)
     TextView selectedArea;
-    @BindView(R.id.weatherLastUpdate)
-    TextView weatherLastUpdate;
-    @BindView(R.id.textView2)
-    TextView textView2;
+    @BindView(R.id.selectedLocation)
+    TextView selectedLocation;
+    @BindView(R.id.dayCurrent)
+    TextView dayCurrent;
+    @BindView(R.id.tanggalCurrent)
+    TextView tanggalCurrent;
+    @BindView(R.id.monthCurrent)
+    TextView monthCurrent;
+    @BindView(R.id.yearCurrent)
+    TextView yearCurrent;
     @BindView(R.id.textView6)
     TextView textView6;
     @BindView(R.id.imageView3)
@@ -49,36 +53,43 @@ public class DetailPlantActivity extends AppCompatActivity implements DetailPlan
     TextView textView8;
     @BindView(R.id.weatherImg)
     ImageView weatherImg;
-    @BindView(R.id.weatherLocation)
-    TextView weatherLocation;
     @BindView(R.id.weatherCondition)
     TextView weatherCondition;
+    @BindView(R.id.weatherLocation)
+    TextView weatherLocation;
     @BindView(R.id.imageView5)
     ImageView imageView5;
     @BindView(R.id.textView7)
     TextView textView7;
-    @BindView(R.id.imageView6)
-    ImageView imageView6;
-    @BindView(R.id.textView11)
-    TextView textView11;
-    @BindView(R.id.textView10)
-    TextView textView10;
-    @BindView(R.id.imageView12)
-    ImageView imageView12;
-    @BindView(R.id.textView13)
-    TextView textView13;
-    @BindView(R.id.textView14)
-    TextView textView14;
-    @BindView(R.id.textView15)
-    TextView textView15;
     @BindView(R.id.currentSoilMoisture)
     TextView currentSoilMoisture;
     @BindView(R.id.currentPrecipitation)
     TextView currentPrecipitation;
     @BindView(R.id.currentPh)
     TextView currentPh;
+    @BindView(R.id.imageView6)
+    ImageView imageView6;
+    @BindView(R.id.textView11)
+    TextView textView11;
+    @BindView(R.id.textView10)
+    TextView textView10;
+    @BindView(R.id.waterPage)
+    ConstraintLayout waterPage;
+    @BindView(R.id.imageView12)
+    ImageView imageView12;
+    @BindView(R.id.textView13)
+    TextView textView13;
+    @BindView(R.id.textView14)
+    TextView textView14;
+    @BindView(R.id.fertilizerPage)
+    ConstraintLayout fertilizerPage;
+    @BindView(R.id.textView15)
+    TextView textView15;
+    private ArrayList<DataPlant> plants;
+
     DetailPlantContract.Presenter presenter;
     ProgressDialog dialog;
+    DataPerangkat perangkat;
     SessionManager sessionManager;
 
     DataPlant plant;
@@ -94,28 +105,26 @@ public class DetailPlantActivity extends AppCompatActivity implements DetailPlan
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_detail_plant);
         ButterKnife.bind(this);
 
         plant = getIntent().getParcelableExtra("plant");
-        umur = getIntent().getStringExtra("umur");
 
         presenter = new DetailPlantPresenter(this);
         sessionManager = new SessionManager(this);
 
-//        Date date = new Date();
-//        SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE-dd-MMMM-yyyy");
-//        String[] tanggal = dateFormat.format(date).split("-");
-//
-//        textView2.setText(tanggal[1]);
-//        textView4.setText(tanggal[2]);
-//        textView.setText(tanggal[0]);
-//        txtTahun.setText(tanggal[3]);
-//
-//        selectedArea.setText("Area of field "+(String.valueOf(plant.getLuasLahan()))+ "m x m");
-//        selectedPlant.setText(plant.getNamaTanaman());
-//        selectedSpecies.setText("Species "+ plant.getSpesies());
-//        selectedAge.setText("Plant Age "+umur+ " Days");
+        Date date = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE-dd-MMMM-yyyy");
+        String[] tanggal = dateFormat.format(date).split("-");
+
+        tanggalCurrent.setText(tanggal[1]);
+        monthCurrent.setText(tanggal[2]);
+        dayCurrent.setText(tanggal[0]);
+        yearCurrent.setText(tanggal[3]);
+
+        selectedArea.setText("Area of field " + (String.valueOf(plant.getLuasLahan())) + "m x m");
+        selectedPlant.setText(plant.getNamaTanaman());
+        selectedSpecies.setText("Species " + plant.getSpesies());
 
     }
 
@@ -129,26 +138,28 @@ public class DetailPlantActivity extends AppCompatActivity implements DetailPlan
     @Override
     public void getdetailplant(ResponseShowDetailPlant plants, String message) {
         selectedPlant.setText(plant.getNamaTanaman());
-        selectedSpecies.setText("Spesies : "+ plants.getData().getSpesies());
-        selectedArea.setText("Luas Area : "+ String.valueOf(plants.getData().getLuasLahan())+" m2");
+        selectedSpecies.setText("Spesies : " + plants.getData().getSpesies());
+        selectedArea.setText("Luas Area : " + String.valueOf(plants.getData().getLuasLahan()) + " m2");
         selectedLocation.setText("Lokasi Lahan : " + plants.getData().getLokasiLahan());
         int position = plants.getData().getPerangkat().getData().size() - 1;
+        perangkat = plants.getData().getPerangkat().getData().get(position);
         currentSoilMoisture.setText(String.valueOf(plants.getData().getPerangkat().getData().get(position).getKelembabanTanah()) + "%RH");
         currentPh.setText(String.valueOf(plants.getData().getPerangkat().getData().get(position).getPh()));
-        if(String.valueOf(plants.getData().getPerangkat().getData().get(position).getKondisi()) == String.valueOf("700"))
-        {
-            textView8.setText("Need Water " + String.valueOf(plants.getData().getPerangkat().getData().get(position).getKondisi()) );
-        }
-        else
-            textView8.setText("Normal");
+        if (String.valueOf(plants.getData().getPerangkat().getData().get(position).getKondisi()) == String.valueOf("700")) {
+            textView8.setText("Need Water " + String.valueOf(plants.getData().getPerangkat().getData().get(position).getKondisi()));
+        } else
+            textView8.setText(" Normal ");
     }
 
     @Override
     public void getweatherforecast(ResponseWeather weatherforecast, String message) {
-        weatherLastUpdate.setText(weatherforecast.getData().getCurrent().getLastUpdated());
-        weatherLocation.setText(plant.getLokasiLahan() + "," + weatherforecast.getData().getLocation().getCountry());
-        currentPrecipitation.setText(String.valueOf(weatherforecast.getData().getForecast().getForecastday().get(0).getDay().getTotalprecipMm()) +"mm");
-        weatherCondition.setText(weatherforecast.getData().getCurrent().getCondition().getText());
+//        weatherLastUpdate.setText(weatherforecast.getData().getCurrent().getLastUpdated());
+        if (weatherforecast != null) {
+            weatherLocation.setText(plant.getLokasiLahan() + "," + weatherforecast.getData().getLocation().getCountry());
+            currentPrecipitation.setText(String.valueOf(weatherforecast.getData().getForecast().getForecastday().get(0).getDay().getTotalprecipMm()) + "mm");
+            weatherCondition.setText(weatherforecast.getData().getCurrent().getCondition().getText());
+        }else
+            Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
 //        weatherImg.setImageResource(weatherforecast.getData().getCurrent().getCondition().getIcon());
     }
 
@@ -157,11 +168,19 @@ public class DetailPlantActivity extends AppCompatActivity implements DetailPlan
 
     }
 
-    @OnClick(R.id.imageView6)
-    public void onViewClicked() {
-        Intent intent = new Intent(this, DetailBintangActivity.class);
-        intent.putExtra("plant", plant);
-        startActivity(intent);
+    @OnClick({R.id.waterPage, R.id.fertilizerPage})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.waterPage:
+                Intent intent = new Intent(this, DetailBintangActivity.class);
+                intent.putExtra("plant", plant);
+                startActivity(intent);
+                break;
+            case R.id.fertilizerPage:
+                Intent fertilize = new Intent(this, NutritionActivity.class);
+                fertilize.putExtra("perangkat", perangkat);
+                startActivity(fertilize);
+                break;
+        }
     }
-
 }
