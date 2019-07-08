@@ -1,8 +1,10 @@
 package com.example.nutplant.feature.manage.detailBintang;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.nutplant.feature.manage.history.HistoryActivity;
 import com.example.nutplant.model.DataPlant;
 import com.example.nutplant.model.ResponseShowDetailPlant;
 import com.example.nutplant.model.weatherModel.ResponseWeather;
@@ -21,6 +23,7 @@ import com.example.nutplant.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class DetailBintangActivity extends AppCompatActivity implements DetailBintangContract.View{
 
@@ -32,10 +35,10 @@ public class DetailBintangActivity extends AppCompatActivity implements DetailBi
     TextView selectedLocation2;
     @BindView(R.id.selectedArea2)
     TextView selectedArea2;
+    @BindView(R.id.selectedAge)
+    TextView selectedAge;
     @BindView(R.id.weatherLastUpdate2)
     TextView weatherLastUpdate2;
-    @BindView(R.id.textView22)
-    TextView textView22;
     @BindView(R.id.weatherHumidity)
     TextView weatherHumidity;
     @BindView(R.id.weatherPressure)
@@ -85,6 +88,7 @@ public class DetailBintangActivity extends AppCompatActivity implements DetailBi
         ButterKnife.bind(this);
 
         plant = getIntent().getParcelableExtra("plant");
+        umur = getIntent().getStringExtra("umur");
 
         presenter = new DetailBintangPresenter(this);
         sessionManager = new SessionManager(this);
@@ -114,10 +118,11 @@ public class DetailBintangActivity extends AppCompatActivity implements DetailBi
 
     @Override
     public void getdetailplant(ResponseShowDetailPlant plants, String message) {
-        selectedPlant2.setText("Name of Plant : "+plant.getNamaTanaman());
-        selectedSpecies2.setText("Spesies : "+ plants.getData().getSpesies());
-        selectedArea2.setText("Luas Area : "+ String.valueOf(plants.getData().getLuasLahan())+" m2");
-        selectedLocation2.setText("Lokasi Lahan : " + plants.getData().getLokasiLahan());
+        selectedPlant2.setText(plant.getNamaTanaman());
+        selectedSpecies2.setText(": "+ plants.getData().getSpesies());
+        selectedArea2.setText(": "+ String.valueOf(plants.getData().getLuasLahan())+" m2");
+        selectedLocation2.setText(": " + plants.getData().getLokasiLahan());
+        selectedAge.setText(": "+ umur + " Days");
         int position = plants.getData().getPerangkat().getData().size() - 1;
         currentSoilMoisture2.setText(String.valueOf(plants.getData().getPerangkat().getData().get(position).getKelembabanTanah()) + "%RH");
         currentTemperature2.setText(String.valueOf(plants.getData().getPerangkat().getData().get(position).getSuhuUdara())+"C");
@@ -127,21 +132,28 @@ public class DetailBintangActivity extends AppCompatActivity implements DetailBi
 
     @Override
     public void getweatherforecast(ResponseWeather weatherforecast, String message) {
-        weatherLastUpdate2.setText(weatherforecast.getData().getCurrent().getLastUpdated());
+        weatherLastUpdate2.setText("Last Updated "+weatherforecast.getData().getCurrent().getLastUpdated());
         weatherLocation2.setText(plant.getLokasiLahan() + "," + weatherforecast.getData().getLocation().getCountry());
         weatherCondition2.setText(weatherforecast.getData().getCurrent().getCondition().getText());
-        weatherHumidity.setText("Humidity : " + String.valueOf(weatherforecast.getData().getCurrent().getHumidity()) + " C");
-        weatherPressure.setText("Pressure :  " + String.valueOf(weatherforecast.getData().getCurrent().getPressureMb())+ "mBar");
-        weatherWind.setText("Wind : "+ String.valueOf(weatherforecast.getData().getCurrent().getWindMph())+ " Km/h");
-        weatherFeelsLike.setText("FeelLikes : " + String.valueOf(weatherforecast.getData().getCurrent().getFeelslikeC()) +" C");
-        weatherVis.setText("Visibility : " + String.valueOf(weatherforecast.getData().getCurrent().getVisKm()) + " Km");
-        weatherUv.setText("Uv : "+ String.valueOf(weatherforecast.getData().getCurrent().getUv()));
-        weatherPrec.setText(String.valueOf("Total Volume Precipitation : " + weatherforecast.getData().getForecast().getForecastday().get(0).getDay().getTotalprecipMm()) +"mm");
+        weatherHumidity.setText(": " + String.valueOf(weatherforecast.getData().getCurrent().getHumidity()) + " C");
+        weatherPressure.setText(": " + String.valueOf(weatherforecast.getData().getCurrent().getPressureMb())+ " mBar");
+        weatherWind.setText(": "+ String.valueOf(weatherforecast.getData().getCurrent().getWindMph())+ " Km/h");
+        weatherFeelsLike.setText(": " + String.valueOf(weatherforecast.getData().getCurrent().getFeelslikeC()) +" C");
+        weatherVis.setText(": " + String.valueOf(weatherforecast.getData().getCurrent().getVisKm()) + " Km");
+        weatherUv.setText(": "+ String.valueOf(weatherforecast.getData().getCurrent().getUv()));
+        weatherPrec.setText(String.valueOf(": " + weatherforecast.getData().getForecast().getForecastday().get(0).getDay().getTotalprecipMm()) +" mm");
     }
 
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
 
+    }
+
+    @OnClick(R.id.imageView6)
+    public void onViewClicked() {
+        Intent intent = new Intent(this, HistoryActivity.class);
+        intent.putExtra("plant", plant);
+        startActivity(intent);
     }
 
 

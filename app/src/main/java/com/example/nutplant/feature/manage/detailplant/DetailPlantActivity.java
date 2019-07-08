@@ -37,6 +37,8 @@ public class DetailPlantActivity extends AppCompatActivity implements DetailPlan
     TextView selectedLocation;
     @BindView(R.id.selectedArea)
     TextView selectedArea;
+    @BindView(R.id.selectedAge)
+    TextView selectedAge;
     @BindView(R.id.weatherLastUpdate)
     TextView weatherLastUpdate;
     @BindView(R.id.textView2)
@@ -69,8 +71,8 @@ public class DetailPlantActivity extends AppCompatActivity implements DetailPlan
     TextView textView13;
     @BindView(R.id.textView14)
     TextView textView14;
-    @BindView(R.id.textView15)
-    TextView textView15;
+    @BindView(R.id.logout)
+    TextView logout;
     @BindView(R.id.currentSoilMoisture)
     TextView currentSoilMoisture;
     @BindView(R.id.currentPrecipitation)
@@ -103,10 +105,10 @@ public class DetailPlantActivity extends AppCompatActivity implements DetailPlan
         presenter = new DetailPlantPresenter(this);
         sessionManager = new SessionManager(this);
 
-//        Date date = new Date();
-//        SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE-dd-MMMM-yyyy");
-//        String[] tanggal = dateFormat.format(date).split("-");
-//
+        Date date = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE-dd-MMMM-yyyy");
+        String[] tanggal = dateFormat.format(date).split("-");
+
 //        textView2.setText(tanggal[1]);
 //        textView4.setText(tanggal[2]);
 //        textView.setText(tanggal[0]);
@@ -115,8 +117,6 @@ public class DetailPlantActivity extends AppCompatActivity implements DetailPlan
 //        selectedArea.setText("Area of field "+(String.valueOf(plant.getLuasLahan()))+ "m x m");
 //        selectedPlant.setText(plant.getNamaTanaman());
 //        selectedSpecies.setText("Species "+ plant.getSpesies());
-//        selectedAge.setText("Plant Age "+umur+ " Days");
-
     }
 
 
@@ -128,24 +128,27 @@ public class DetailPlantActivity extends AppCompatActivity implements DetailPlan
 
     @Override
     public void getdetailplant(ResponseShowDetailPlant plants, String message) {
+        selectedAge.setText(": "+umur+ " Days");
         selectedPlant.setText(plant.getNamaTanaman());
-        selectedSpecies.setText("Spesies : "+ plants.getData().getSpesies());
-        selectedArea.setText("Luas Area : "+ String.valueOf(plants.getData().getLuasLahan())+" m2");
-        selectedLocation.setText("Lokasi Lahan : " + plants.getData().getLokasiLahan());
+        selectedSpecies.setText(": "+ plants.getData().getSpesies());
+        selectedArea.setText(": "+ String.valueOf(plants.getData().getLuasLahan())+" m2");
+        selectedLocation.setText(": " + plants.getData().getLokasiLahan());
         int position = plants.getData().getPerangkat().getData().size() - 1;
         currentSoilMoisture.setText(String.valueOf(plants.getData().getPerangkat().getData().get(position).getKelembabanTanah()) + "%RH");
         currentPh.setText(String.valueOf(plants.getData().getPerangkat().getData().get(position).getPh()));
-        if(String.valueOf(plants.getData().getPerangkat().getData().get(position).getKondisi()) == String.valueOf("700"))
+        if(String.valueOf(plants.getData().getPerangkat().getData().get(position).getKondisi()) == String.valueOf("0"))
         {
-            textView8.setText("Need Water " + String.valueOf(plants.getData().getPerangkat().getData().get(position).getKondisi()) );
-        }
+//            textView8.setText("Need Water " + String.valueOf(plants.getData().getPerangkat().getData().get(position).getKondisi()) );
+            textView8.setText("Need Water ");
+//            textView8.setText("Normal");
+            }
         else
             textView8.setText("Normal");
     }
 
     @Override
     public void getweatherforecast(ResponseWeather weatherforecast, String message) {
-        weatherLastUpdate.setText(weatherforecast.getData().getCurrent().getLastUpdated());
+        weatherLastUpdate.setText("Last Update "+weatherforecast.getData().getCurrent().getLastUpdated());
         weatherLocation.setText(plant.getLokasiLahan() + "," + weatherforecast.getData().getLocation().getCountry());
         currentPrecipitation.setText(String.valueOf(weatherforecast.getData().getForecast().getForecastday().get(0).getDay().getTotalprecipMm()) +"mm");
         weatherCondition.setText(weatherforecast.getData().getCurrent().getCondition().getText());
@@ -157,11 +160,20 @@ public class DetailPlantActivity extends AppCompatActivity implements DetailPlan
 
     }
 
+
+
     @OnClick(R.id.imageView6)
     public void onViewClicked() {
         Intent intent = new Intent(this, DetailBintangActivity.class);
         intent.putExtra("plant", plant);
+        intent.putExtra("umur", umur);
         startActivity(intent);
     }
+
+    @OnClick(R.id.logout)
+    public void onLogout() {
+        sessionManager.logout();
+    }
+
 
 }

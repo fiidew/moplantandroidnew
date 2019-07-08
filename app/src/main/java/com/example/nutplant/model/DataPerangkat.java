@@ -16,16 +16,16 @@ public class DataPerangkat implements Parcelable {
     private String tanggal;
     @SerializedName("kelembabanTanah")
     @Expose
-    private Integer kelembabanTanah;
+    private Double kelembabanTanah;
     @SerializedName("ph")
     @Expose
     private Double ph;
     @SerializedName("kelembabanUdara")
     @Expose
-    private Integer kelembabanUdara;
+    private Double kelembabanUdara;
     @SerializedName("suhuUdara")
     @Expose
-    private Integer suhuUdara;
+    private Double suhuUdara;
     @SerializedName("kondisi")
     @Expose
     private Double kondisi;
@@ -46,11 +46,11 @@ public class DataPerangkat implements Parcelable {
         this.tanggal = tanggal;
     }
 
-    public Integer getKelembabanTanah() {
+    public Double getKelembabanTanah() {
         return kelembabanTanah;
     }
 
-    public void setKelembabanTanah(Integer kelembabanTanah) {
+    public void setKelembabanTanah(Double kelembabanTanah) {
         this.kelembabanTanah = kelembabanTanah;
     }
 
@@ -62,19 +62,19 @@ public class DataPerangkat implements Parcelable {
         this.ph = ph;
     }
 
-    public Integer getKelembabanUdara() {
+    public Double getKelembabanUdara() {
         return kelembabanUdara;
     }
 
-    public void setKelembabanUdara(Integer kelembabanUdara) {
+    public void setKelembabanUdara(Double kelembabanUdara) {
         this.kelembabanUdara = kelembabanUdara;
     }
 
-    public Integer getSuhuUdara() {
+    public Double getSuhuUdara() {
         return suhuUdara;
     }
 
-    public void setSuhuUdara(Integer suhuUdara) {
+    public void setSuhuUdara(Double suhuUdara) {
         this.suhuUdara = suhuUdara;
     }
 
@@ -108,10 +108,10 @@ public class DataPerangkat implements Parcelable {
     protected DataPerangkat(Parcel in) {
         this.id = in.readString();
         this.tanggal = in.readString();
-        this.kelembabanTanah = (Integer) in.readValue(Integer.class.getClassLoader());
+        this.kelembabanTanah = (Double) in.readValue(Double.class.getClassLoader());
         this.ph = (Double) in.readValue(Double.class.getClassLoader());
-        this.kelembabanUdara = (Integer) in.readValue(Integer.class.getClassLoader());
-        this.suhuUdara = (Integer) in.readValue(Integer.class.getClassLoader());
+        this.kelembabanUdara = (Double) in.readValue(Double.class.getClassLoader());
+        this.suhuUdara = (Double) in.readValue(Double.class.getClassLoader());
         this.kondisi = (Double) in.readValue(Double.class.getClassLoader());
     }
 

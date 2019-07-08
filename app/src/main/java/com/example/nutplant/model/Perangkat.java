@@ -18,7 +18,7 @@ public class Perangkat implements Parcelable {
     private Integer status;
     @SerializedName("data")
     @Expose
-    private List<DataPerangkat> data = null;
+    private ArrayList<DataPerangkat> data;
 
     public String getId() {
         return id;
@@ -40,7 +40,7 @@ public class Perangkat implements Parcelable {
         return data;
     }
 
-    public void setData(List<DataPerangkat> data) {
+    public void setData(ArrayList<DataPerangkat> data) {
         this.data = data;
     }
 

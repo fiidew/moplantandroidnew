@@ -84,7 +84,9 @@ public class AddPlantActivity extends AppCompatActivity implements AddPlantContr
                 final String[] tanaman = new String[]{
                         "Kangkung",
                         "Sawi",
-                        "Bayam"
+                        "Bayam",
+                        "Cabai",
+                        "Terong"
                 };
 
                 builder.setSingleChoiceItems(

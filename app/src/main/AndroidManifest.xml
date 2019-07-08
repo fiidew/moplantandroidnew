@@ -12,10 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".feature.manage.history.HistoryActivity"></activity>
         <activity
             android:name=".feature.manage.detailBintang.DetailBintangActivity"
             android:label="@string/title_activity_detail_bintang"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".feature.manage.detailplant.DetailPlantActivity" />
         <activity android:name=".feature.auth.register.RegisterActivity" />
         <activity android:name=".feature.manage.create.AddPlantActivity" />
@@ -27,38 +28,32 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-         <!--<service android:name=".firebase.MyFirebaseMessagingService">-->
-         <!--<intent-filter>-->
-         <!--<action android:name="com.google.firebase.MESSAGING_EVENT" />-->
-         <!--</intent-filter>-->
-         <!--</service>-->
-         <!--<service android:name=".firebase.MyFirebaseInstanceIDService">-->
-         <!--<intent-filter>-->
-         <!--<action android:name="com.google.firebase.INSTANCE_ID_EVENT" />-->
-         <!--</intent-filter>-->
-         <!--</service>-->
-        <!--<service android:name=".firebase.MyFirebaseInstanceIDService">-->
-            <!--<intent-filter>-->
-                <!--<action android:name="com.google.firebase.INSTANCE_ID_EVENT" />-->
-            <!--</intent-filter>-->
-        <!--</service>-->
-
+        </activity> <!-- <service android:name=".firebase.MyFirebaseMessagingService"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="com.google.firebase.MESSAGING_EVENT" /> -->
+        <!-- </intent-filter> -->
+        <!-- </service> -->
+        <!-- <service android:name=".firebase.MyFirebaseInstanceIDService"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="com.google.firebase.INSTANCE_ID_EVENT" /> -->
+        <!-- </intent-filter> -->
+        <!-- </service> -->
+        <!-- <service android:name=".firebase.MyFirebaseInstanceIDService"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="com.google.firebase.INSTANCE_ID_EVENT" /> -->
+        <!-- </intent-filter> -->
+        <!-- </service> -->
         <service
             android:name=".firebase.MyFirebaseMessagingService"
             android:stopWithTask="false">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
-            android:resource="@drawable/logo1">
-        </meta-data>
-        <!--<meta-data-->
-            <!--android:name="com.google.firebase.messaging.default_notification_color"-->
-            <!--android:resource="@color/">-->
-        <!--</meta-data>-->
+            android:resource="@drawable/logo1"></meta-data>
     </application>
 
 </manifest>

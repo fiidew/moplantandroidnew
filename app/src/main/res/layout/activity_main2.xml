@@ -48,39 +48,83 @@
                         android:text="Kangkung Ayah"
                         android:textSize="18sp" />
 
-                    <TextView
-                        android:id="@+id/selectedSpecies"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:text="Species Kangkung"
-                        android:textSize="16sp" />
+                        android:orientation="horizontal">
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="20dp"
+                                android:text="Species "
+                                android:textSize="16sp" />
 
-                    <!--<TextView-->
-                        <!--android:id="@+id/selectedAge"-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_marginTop="10dp"-->
-                        <!--android:text="Plant age 12 Days"-->
-                        <!--android:textSize="16sp" />-->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:text="Large Area "
+                                android:textSize="16sp" />
 
-                    <TextView
-                        android:id="@+id/selectedArea"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Area of field 120 m x m"
-                        android:textSize="16sp" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:text="Location "
+                                android:textSize="16sp" />
 
-                    <TextView
-                        android:id="@+id/selectedLocation"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="20dp"
-                        android:text="Area of field 120 m x m"
-                        android:textSize="16sp" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginBottom="20dp"
+                                android:text="Age "
+                                android:textSize="16sp" />
 
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <TextView
+                                android:id="@+id/selectedSpecies"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="20dp"
+                                android:text="Species Kangkung"
+                                android:textSize="16sp" />
+
+                            <TextView
+                                android:id="@+id/selectedArea"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:text="Area of field 120 m x m"
+                                android:textSize="16sp" />
+
+                            <TextView
+                                android:id="@+id/selectedLocation"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:text="Area of field 120 m x m"
+                                android:textSize="16sp" />
+
+                            <TextView
+                                android:id="@+id/selectedAge"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginBottom="20dp"
+                                android:text="Plant age 12 Days"
+                                android:textSize="16sp" />
+
+                        </LinearLayout>
+                    </LinearLayout>
 
                 </LinearLayout>
 
@@ -108,28 +152,9 @@
                         android:layout_marginTop="15dp"
                         android:text="Wednesday"
                         android:textColor="@color/colorPrimary"
-                        android:textSize="20sp"
+                        android:textSize="10sp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
-
-                    <!--<TextView-->
-                        <!--android:id="@+id/textView4"-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_marginStart="8dp"-->
-                        <!--android:layout_marginTop="8dp"-->
-                        <!--android:text="Mei"-->
-                        <!--app:layout_constraintStart_toEndOf="@+id/textView2"-->
-                        <!--app:layout_constraintTop_toBottomOf="@+id/weatherLastUpdate" />-->
-
-                    <!--<TextView-->
-                        <!--android:id="@+id/txtTahun"-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_marginTop="8dp"-->
-                        <!--android:text="2019"-->
-                        <!--app:layout_constraintStart_toStartOf="@+id/textView4"-->
-                        <!--app:layout_constraintTop_toBottomOf="@+id/textView4" />-->
 
                     <TextView
                         android:id="@+id/textView2"
@@ -507,7 +532,7 @@
                     android:background="@color/colorPrimaryDark">
 
                     <TextView
-                        android:id="@+id/textView15"
+                        android:id="@+id/logout"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
