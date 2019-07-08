@@ -86,6 +86,10 @@ public class DataPerangkat implements Parcelable {
         this.kondisi = kondisi;
     }
 
+
+    public DataPerangkat() {
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -102,9 +106,6 @@ public class DataPerangkat implements Parcelable {
         dest.writeValue(this.kondisi);
     }
 
-    public DataPerangkat() {
-    }
-
     protected DataPerangkat(Parcel in) {
         this.id = in.readString();
         this.tanggal = in.readString();
@@ -115,7 +116,7 @@ public class DataPerangkat implements Parcelable {
         this.kondisi = (Double) in.readValue(Double.class.getClassLoader());
     }
 
-    public static final Parcelable.Creator<DataPerangkat> CREATOR = new Parcelable.Creator<DataPerangkat>() {
+    public static final Creator<DataPerangkat> CREATOR = new Creator<DataPerangkat>() {
         @Override
         public DataPerangkat createFromParcel(Parcel source) {
             return new DataPerangkat(source);

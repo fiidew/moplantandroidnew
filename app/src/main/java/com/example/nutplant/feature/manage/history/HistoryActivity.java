@@ -40,7 +40,7 @@ public class HistoryActivity extends AppCompatActivity implements HistoryContrac
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_history);
+        setContentView(R.layout.activity_history_bintang);
         ButterKnife.bind(this);
 
         presenter = new HistoryPresenter(this);

@@ -18,6 +18,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.nutplant.R;
 
@@ -132,16 +133,18 @@ public class DetailBintangActivity extends AppCompatActivity implements DetailBi
 
     @Override
     public void getweatherforecast(ResponseWeather weatherforecast, String message) {
-        weatherLastUpdate2.setText("Last Updated "+weatherforecast.getData().getCurrent().getLastUpdated());
-        weatherLocation2.setText(plant.getLokasiLahan() + "," + weatherforecast.getData().getLocation().getCountry());
-        weatherCondition2.setText(weatherforecast.getData().getCurrent().getCondition().getText());
-        weatherHumidity.setText(": " + String.valueOf(weatherforecast.getData().getCurrent().getHumidity()) + " C");
-        weatherPressure.setText(": " + String.valueOf(weatherforecast.getData().getCurrent().getPressureMb())+ " mBar");
-        weatherWind.setText(": "+ String.valueOf(weatherforecast.getData().getCurrent().getWindMph())+ " Km/h");
-        weatherFeelsLike.setText(": " + String.valueOf(weatherforecast.getData().getCurrent().getFeelslikeC()) +" C");
-        weatherVis.setText(": " + String.valueOf(weatherforecast.getData().getCurrent().getVisKm()) + " Km");
-        weatherUv.setText(": "+ String.valueOf(weatherforecast.getData().getCurrent().getUv()));
-        weatherPrec.setText(String.valueOf(": " + weatherforecast.getData().getForecast().getForecastday().get(0).getDay().getTotalprecipMm()) +" mm");
+        if (weatherforecast!=null) {
+            weatherLastUpdate2.setText("Last Updated "+weatherforecast.getData().getCurrent().getLastUpdated());
+            weatherLocation2.setText(plant.getLokasiLahan() + "," + weatherforecast.getData().getLocation().getCountry());
+            weatherCondition2.setText(weatherforecast.getData().getCurrent().getCondition().getText());
+            weatherHumidity.setText(": " + String.valueOf(weatherforecast.getData().getCurrent().getHumidity()) + " C");
+            weatherPressure.setText(": " + String.valueOf(weatherforecast.getData().getCurrent().getPressureMb())+ " mBar");
+            weatherWind.setText(": "+ String.valueOf(weatherforecast.getData().getCurrent().getWindMph())+ " Km/h");
+            weatherFeelsLike.setText(": " + String.valueOf(weatherforecast.getData().getCurrent().getFeelslikeC()) +" C");
+            weatherVis.setText(": " + String.valueOf(weatherforecast.getData().getCurrent().getVisKm()) + " Km");
+            weatherUv.setText(": "+ String.valueOf(weatherforecast.getData().getCurrent().getUv()));
+            weatherPrec.setText(String.valueOf(": " + weatherforecast.getData().getForecast().getForecastday().get(0).getDay().getTotalprecipMm()) +" mm");
+        }else Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
     @Override

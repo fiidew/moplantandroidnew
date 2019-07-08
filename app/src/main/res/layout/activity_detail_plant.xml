@@ -4,15 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Main2Activity">
+    tools:context=".feature.manage.detailplant.DetailPlantActivity">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -47,6 +49,7 @@
                         android:drawablePadding="10dp"
                         android:text="Kangkung Ayah"
                         android:textSize="18sp" />
+
                     <TextView
                         android:id="@+id/selectedSpecies"
                         android:layout_width="wrap_content"
@@ -55,22 +58,32 @@
                         android:text="Species Kangkung"
                         android:textSize="16sp" />
 
-                    <TextView
-                        android:id="@+id/selectedAge"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Plant age 12 Days"
-                        android:textSize="16sp" />
+                    <!--<TextView-->
+                    <!--android:id="@+id/selectedAge"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="10dp"-->
+                    <!--android:text="Plant age 12 Days"-->
+                    <!--android:textSize="16sp" />-->
 
                     <TextView
                         android:id="@+id/selectedArea"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
+                        android:text="Area of field 120 m x m"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/selectedLocation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
                         android:layout_marginBottom="20dp"
                         android:text="Area of field 120 m x m"
                         android:textSize="16sp" />
+
+
                 </LinearLayout>
 
 
@@ -90,45 +103,68 @@
                     android:layout_marginBottom="20dp">
 
                     <TextView
-                        android:id="@+id/textView"
+                        android:id="@+id/dayCurrent"
                         android:layout_width="wrap_content"
-                        android:layout_height="22dp"
-                        android:layout_marginStart="8dp"
+                        android:layout_height="23dp"
+                        android:layout_marginStart="24dp"
                         android:layout_marginTop="15dp"
                         android:text="Wednesday"
                         android:textColor="@color/colorPrimary"
-                        android:textSize="10sp"
+                        android:textSize="20sp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <TextView
-                        android:id="@+id/textView4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:text="Mei"
-                        app:layout_constraintStart_toEndOf="@+id/textView2"
-                        app:layout_constraintTop_toBottomOf="@+id/textView" />
+                    <!--<TextView-->
+                    <!--android:id="@+id/textView4"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginStart="8dp"-->
+                    <!--android:layout_marginTop="8dp"-->
+                    <!--android:text="Mei"-->
+                    <!--app:layout_constraintStart_toEndOf="@+id/textView2"-->
+                    <!--app:layout_constraintTop_toBottomOf="@+id/weatherLastUpdate" />-->
+
+                    <!--<TextView-->
+                    <!--android:id="@+id/txtTahun"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="8dp"-->
+                    <!--android:text="2019"-->
+                    <!--app:layout_constraintStart_toStartOf="@+id/textView4"-->
+                    <!--app:layout_constraintTop_toBottomOf="@+id/textView4" />-->
 
                     <TextView
-                        android:id="@+id/txtTahun"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="2019"
-                        app:layout_constraintStart_toStartOf="@+id/textView4"
-                        app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-                    <TextView
-                        android:id="@+id/textView2"
+                        android:id="@+id/tanggalCurrent"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:text="03"
-                        android:textSize="36sp"
-                        app:layout_constraintStart_toStartOf="@+id/textView"
-                        app:layout_constraintTop_toBottomOf="@+id/textView" />
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="28sp"
+                        app:layout_constraintStart_toStartOf="@+id/dayCurrent"
+                        app:layout_constraintTop_toBottomOf="@+id/dayCurrent" />
+
+                    <TextView
+                        android:id="@+id/monthCurrent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="July"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toEndOf="@+id/tanggalCurrent"
+                        app:layout_constraintTop_toTopOf="@+id/tanggalCurrent" />
+
+                    <TextView
+                        android:id="@+id/yearCurrent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="2019"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toEndOf="@+id/tanggalCurrent"
+                        app:layout_constraintTop_toBottomOf="@+id/monthCurrent" />
 
                     <TextView
                         android:id="@+id/textView6"
@@ -136,11 +172,11 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"
                         android:layout_marginStart="24dp"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="8dp"
                         android:text="Status"
                         android:textSize="16sp"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+                        app:layout_constraintTop_toBottomOf="@+id/weatherLocation" />
 
                     <ImageView
                         android:id="@+id/imageView3"
@@ -171,7 +207,7 @@
                         app:layout_constraintTop_toTopOf="@+id/imageView3" />
 
                     <ImageView
-                        android:id="@+id/planticon"
+                        android:id="@+id/weatherImg"
                         android:layout_width="90dp"
                         android:layout_height="40dp"
                         android:layout_gravity="right"
@@ -182,7 +218,18 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/selectedLocation"
+                        android:id="@+id/weatherCondition"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginEnd="24dp"
+                        android:text="Sedati, Sidoarjo"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/weatherImg" />
+
+                    <TextView
+                        android:id="@+id/weatherLocation"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
@@ -191,13 +238,15 @@
                         android:text="Sedati, Sidoarjo"
                         android:textSize="16sp"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/planticon" />
+                        app:layout_constraintTop_toBottomOf="@+id/weatherCondition" />
+
 
                     <ImageView
                         android:id="@+id/imageView5"
                         android:layout_width="22dp"
                         android:layout_height="34dp"
-                        app:layout_constraintStart_toStartOf="@+id/selectedLocation"
+                        android:layout_marginLeft="16dp"
+                        app:layout_constraintStart_toStartOf="@+id/weatherLocation"
                         app:layout_constraintTop_toTopOf="@+id/imageView3"
                         app:srcCompat="@drawable/icon_status_pupuk" />
 
@@ -206,10 +255,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="22dp"
                         android:layout_margin="5dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginRight="10dp"
                         android:background="@color/colorAccent"
                         android:text="   Optimal   "
                         android:textColor="@android:color/white"
                         android:textSize="15sp"
+                        app:layout_constraintEnd_toEndOf="@+id/weatherLocation"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toEndOf="@+id/imageView5"
                         app:layout_constraintTop_toTopOf="@+id/imageView3" />
 
@@ -274,6 +327,7 @@
                                     android:text="Moisture" />
 
                                 <TextView
+                                    android:id="@+id/currentSoilMoisture"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
@@ -301,9 +355,12 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:layout_marginTop="10dp"
-                                    android:text="Rain Drops" />
+                                    android:text="Total Precipitation"
+                                    android:textAlignment="center"
+                                    android:textSize="12sp" />
 
                                 <TextView
+                                    android:id="@+id/currentPrecipitation"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
@@ -334,6 +391,7 @@
                                     android:text="pH" />
 
                                 <TextView
+                                    android:id="@+id/currentPh"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
@@ -359,6 +417,7 @@
                 app:cardCornerRadius="10dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/waterPage"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/bg_status_air">
@@ -413,11 +472,11 @@
                 android:layout_height="100dp"
                 android:layout_marginLeft="24dp"
                 android:layout_marginRight="24dp"
-                app:cardCornerRadius="10dp"
                 android:layout_marginBottom="24dp"
-                android:id="@+id/pupukpage">
+                app:cardCornerRadius="10dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/fertilizerPage"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/bg_status_pupuk">
@@ -429,7 +488,7 @@
                         android:layout_marginLeft="20dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/icon_pupuk" />
+                        app:srcCompat="@drawable/pupuk" />
 
                     <TextView
                         android:id="@+id/textView13"
@@ -437,7 +496,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
                         android:layout_marginTop="30dp"
-                        android:text="Check fertilizers requirements"
+                        android:text="Check fertilizer requirements"
                         android:textColor="@android:color/white"
                         app:layout_constraintStart_toEndOf="@+id/imageView12"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -447,7 +506,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="and dossage of fertilizer needed"
+                        android:text="and dosage of fertilizer needed"
                         android:textColor="@android:color/white"
                         app:layout_constraintStart_toStartOf="@+id/textView13"
                         app:layout_constraintTop_toBottomOf="@+id/textView13" />
@@ -472,8 +531,8 @@
                 android:layout_height="50dp"
                 android:layout_marginLeft="24dp"
                 android:layout_marginRight="24dp"
-                app:cardCornerRadius="10dp"
-                android:layout_marginBottom="40dp">
+                android:layout_marginBottom="40dp"
+                app:cardCornerRadius="10dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -481,7 +540,7 @@
                     android:background="@color/colorPrimaryDark">
 
                     <TextView
-                        android:id="@+id/logout"
+                        android:id="@+id/textView15"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
