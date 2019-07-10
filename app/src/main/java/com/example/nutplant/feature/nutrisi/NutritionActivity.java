@@ -15,7 +15,6 @@ import butterknife.OnClick;
 
 public class NutritionActivity extends AppCompatActivity {
 
-
     Integer[] status1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     Integer[] status2 = {0, 0, 0, 0, 0, 0, 2, 1, 1, 1, 0};
     Integer[] status3 = {0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 0};
@@ -91,6 +90,8 @@ public class NutritionActivity extends AppCompatActivity {
 
     @OnClick(R.id.historylink)
     public void onViewClicked() {
-        startActivity(new Intent(this, HistoryActivity.class));
+        Intent intent = new Intent(this, HistoryActivity.class);
+        intent.putExtra("namaTanaman",getIntent().getStringExtra("namaTanaman"));
+        startActivity(intent);
     }
 }

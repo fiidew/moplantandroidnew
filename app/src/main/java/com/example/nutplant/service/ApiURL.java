@@ -10,5 +10,7 @@ public class ApiURL {
     public static final String GETDETAILPLANTS = "api/tanaman/{id}/tanamandetail";
     public static final String GETWEATHERFORECAST = "api/tanaman/{city}/getcuaca";
     public static final String GETDETAILHISTORY = "api/tanaman/data-in-time";
+    public static final String GETNOTIFICATION = "api/notification/getAll";
+    public static final String UPDATENOTIFICATION = "api/notification/updateStatus";
     public static final String UPDATEUSER = "api/user/{id}/update";
 }

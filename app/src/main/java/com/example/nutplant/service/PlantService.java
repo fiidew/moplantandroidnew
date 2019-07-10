@@ -3,8 +3,10 @@ package com.example.nutplant.service;
 import com.example.nutplant.model.Plant;
 import com.example.nutplant.model.ResponseAddplant;
 import com.example.nutplant.model.ResponseHistory;
+import com.example.nutplant.model.ResponseNotification;
 import com.example.nutplant.model.ResponseShowDetailPlant;
 import com.example.nutplant.model.ResponseShowplant;
+import com.example.nutplant.model.ResponseUpdate;
 import com.example.nutplant.model.User;
 import com.example.nutplant.model.weatherModel.ResponseWeather;
 
@@ -36,6 +38,15 @@ public interface PlantService {
                                             @Field("idTanaman") String idTanaman,
                                             @Field("start") String start,
                                             @Field("end") String end);
+
+    @GET(ApiURL.GETNOTIFICATION)
+    Call<ResponseNotification> getNotifications (@Header("Authorization") String token);
+
+    @FormUrlEncoded
+    @POST(ApiURL.UPDATENOTIFICATION)
+    Call<ResponseUpdate> updateNotification(@Header("Authorization") String token,
+                                            @Field("id") String idTanaman,
+                                            @Field("status") Integer status);
 
 
     @FormUrlEncoded

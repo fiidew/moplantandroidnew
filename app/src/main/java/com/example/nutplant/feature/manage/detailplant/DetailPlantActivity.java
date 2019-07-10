@@ -176,6 +176,7 @@ public class DetailPlantActivity extends AppCompatActivity implements DetailPlan
                 break;
             case R.id.fertilizerPage:
                 Intent fertilize = new Intent(this, NutritionActivity.class);
+                fertilize.putExtra("namaTanaman", plant.getNamaTanaman());
                 fertilize.putExtra("perangkat", perangkat);
                 startActivity(fertilize);
                 break;

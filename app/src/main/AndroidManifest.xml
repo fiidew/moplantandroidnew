@@ -12,8 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".feature.manage.history.HistoryActivity"></activity>
-        <activity android:name=".NotificationActivity"></activity>
+        <activity android:name=".IgnoreActivity"></activity>
+        <activity android:name=".feature.manage.history.HistoryActivity" />
+        <activity android:name=".feature.notification.NotificationActivity" />
         <activity android:name=".feature.history.item.ItemHistoryActivity" />
         <activity android:name=".feature.history.HistoryActivity" />
         <activity android:name=".feature.nutrisi.NutritionActivity" />
@@ -58,7 +59,7 @@
 
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
-            android:resource="@drawable/logo1"></meta-data>
+            android:resource="@drawable/logo1" />
     </application>
 
 </manifest>
