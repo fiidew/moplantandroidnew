@@ -55,19 +55,6 @@ public class LoginActivity extends Activity implements LoginContract.View {
     @Override
     public void login(boolean isSuccess, String meessages) {
         if (isSuccess) {
-//            Intent intent = new Intent(this, ManageActivity.class);
-//            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//            startActivity(intent);
-
-//            FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(this, new OnSuccessListener<InstanceIdResult>() {
-//                @Override
-//                public void onSuccess(InstanceIdResult instanceIdResult) {
-//                    String token = instanceIdResult.getToken();
-//                    Log.d("Token", "onSuccess: " + token);
-////                    updateToken(token);
-//                    presenter.updateToken(sessionManager.getToken(),sessionManager.getIdUser(),token);
-//                }
-//            });
             FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(this, new OnSuccessListener<InstanceIdResult>() {
                 @Override
                 public void onSuccess(InstanceIdResult instanceIdResult) {

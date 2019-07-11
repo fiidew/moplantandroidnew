@@ -113,7 +113,7 @@ public class AddPlantActivity extends AppCompatActivity implements AddPlantContr
             }
         });
 
-        dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
+        dateFormatter = new SimpleDateFormat("MM-dd-yyyy", Locale.US);
     }
 
     private void showDateDialog() {

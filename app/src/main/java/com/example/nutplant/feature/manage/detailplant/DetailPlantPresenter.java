@@ -4,8 +4,10 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.example.nutplant.model.ResponseShowDetailPlant;
+import com.example.nutplant.model.ResponseUserUpdate;
 import com.example.nutplant.model.weatherModel.ResponseWeather;
 import com.example.nutplant.service.ApiClient;
+import com.example.nutplant.service.AuthService;
 import com.example.nutplant.service.PlantService;
 
 import retrofit2.Call;
@@ -14,11 +16,13 @@ import retrofit2.Response;
 
 public class DetailPlantPresenter implements DetailPlantContract.Presenter{
     private PlantService service;
+    private AuthService authService;
     private DetailPlantContract.View view;
 
     public DetailPlantPresenter(DetailPlantContract.View view) {
         this.view = view;
         service = ApiClient.getClient().create(PlantService.class);
+        authService = ApiClient.getClient().create(AuthService.class);
     }
 
     @Override
@@ -74,9 +78,34 @@ public class DetailPlantPresenter implements DetailPlantContract.Presenter{
             public void onFailure(Call<ResponseWeather> call, Throwable t) {
                 view.showLoading(false);
                 Log.e("error", "onFailure: " + t.getMessage(), t);
-//                view.getweatherforecast(null, t.getMessage());
                 call.cancel();
                 t.printStackTrace();
+            }
+        });
+    }
+
+    @Override
+    public void updateToken(String token, String id, String fcmtoken) {
+        Call<ResponseUserUpdate> updateToken = authService.updateUser(token,id,fcmtoken);
+        updateToken.enqueue(new Callback<ResponseUserUpdate>() {
+            @Override
+            public void onResponse(Call<ResponseUserUpdate> call, Response<ResponseUserUpdate> response) {
+                if (response.code() == 200){
+                    ResponseUserUpdate data = response.body();
+                    if (data.getStatus()) {
+                        view.isSuccessUpdateToken(true, "Update Token");
+                    }else
+                        view.isSuccessUpdateToken(false, response.body().getMessage());
+                }else{
+                    view.isSuccessUpdateToken(false, "Update Token Failed : " + response.message());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseUserUpdate> call, Throwable t) {
+                t.printStackTrace();
+                call.cancel();
+                view.isSuccessUpdateToken(false, "Update Token failed : " + t.getMessage());
             }
         });
     }

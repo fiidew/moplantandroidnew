@@ -18,7 +18,6 @@
         <activity android:name=".feature.history.item.ItemHistoryActivity" />
         <activity android:name=".feature.history.HistoryActivity" />
         <activity android:name=".feature.nutrisi.NutritionActivity" />
-        <activity android:name=".Main2Activity" />
         <activity
             android:name=".feature.manage.detailBintang.DetailBintangActivity"
             android:label="@string/title_activity_detail_bintang"
@@ -34,21 +33,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- <service android:name=".firebase.MyFirebaseMessagingService"> -->
-        <!-- <intent-filter> -->
-        <!-- <action android:name="com.google.firebase.MESSAGING_EVENT" /> -->
-        <!-- </intent-filter> -->
-        <!-- </service> -->
-        <!-- <service android:name=".firebase.MyFirebaseInstanceIDService"> -->
-        <!-- <intent-filter> -->
-        <!-- <action android:name="com.google.firebase.INSTANCE_ID_EVENT" /> -->
-        <!-- </intent-filter> -->
-        <!-- </service> -->
-        <!-- <service android:name=".firebase.MyFirebaseInstanceIDService"> -->
-        <!-- <intent-filter> -->
-        <!-- <action android:name="com.google.firebase.INSTANCE_ID_EVENT" /> -->
-        <!-- </intent-filter> -->
-        <!-- </service> -->
+        </activity>
         <service
             android:name=".firebase.MyFirebaseMessagingService"
             android:stopWithTask="false">

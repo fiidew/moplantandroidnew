@@ -3,6 +3,7 @@ package com.example.nutplant.feature.manage.detailplant;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -19,6 +20,9 @@ import com.example.nutplant.model.DataPlant;
 import com.example.nutplant.model.ResponseShowDetailPlant;
 import com.example.nutplant.model.weatherModel.ResponseWeather;
 import com.example.nutplant.utils.SessionManager;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -105,6 +109,9 @@ public class DetailPlantActivity extends AppCompatActivity implements DetailPlan
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_plant);
         ButterKnife.bind(this);
+        dialog = new ProgressDialog(this);
+        dialog.setTitle("Loading");
+        dialog.setMessage("Getting data from server");
 
         plant = getIntent().getParcelableExtra("plant");
 
@@ -120,50 +127,56 @@ public class DetailPlantActivity extends AppCompatActivity implements DetailPlan
         dayCurrent.setText(tanggal[0]);
         yearCurrent.setText(tanggal[3]);
 
-        selectedArea.setText("Area of field " + (String.valueOf(plant.getLuasLahan())) + "m x m");
+        selectedArea.setText("Area of field " + (plant.getLuasLahan()) + "m x m");
         selectedPlant.setText(plant.getNamaTanaman());
         selectedSpecies.setText("Species " + plant.getSpesies());
+        FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(this, new OnSuccessListener<InstanceIdResult>() {
+            @Override
+            public void onSuccess(InstanceIdResult instanceIdResult) {
+                String token = instanceIdResult.getToken();
+                Log.e("Token", "onSuccess: " + token);
+                presenter.updateToken(sessionManager.getToken(),sessionManager.getIdUser(),token);
+            }
+        });
     }
 
 
     @Override
     public void showLoading(boolean show) {
-//        if (show) dialog.show();
-//        else dialog.cancel(); //or u can use dismiss
+        if (show) dialog.show();
+        else dialog.cancel();
     }
 
     @Override
     public void getdetailplant(ResponseShowDetailPlant plants, String message) {
         selectedPlant.setText(plant.getNamaTanaman());
         selectedSpecies.setText("Spesies : " + plants.getData().getSpesies());
-        selectedArea.setText("Luas Area : " + String.valueOf(plants.getData().getLuasLahan()) + " m2");
+        selectedArea.setText("Luas Area : " + plants.getData().getLuasLahan() + " m2");
         selectedLocation.setText("Lokasi Lahan : " + plants.getData().getLokasiLahan());
         int position = plants.getData().getPerangkat().getData().size() - 1;
         perangkat = plants.getData().getPerangkat().getData().get(position);
-        currentSoilMoisture.setText(String.valueOf(plants.getData().getPerangkat().getData().get(position).getKelembabanTanah()) + "%RH");
+        currentSoilMoisture.setText(plants.getData().getPerangkat().getData().get(position).getKelembabanTanah() + "%RH");
         currentPh.setText(String.valueOf(plants.getData().getPerangkat().getData().get(position).getPh()));
 
-        if (String.valueOf(plants.getData().getPerangkat().getData().get(position).getKondisi()) == String.valueOf("700")) {
-            textView8.setText("Need Water " + String.valueOf(plants.getData().getPerangkat().getData().get(position).getKondisi()));
+        if (String.valueOf(plants.getData().getPerangkat().getData().get(position).getKondisi()) == "700") {
+            textView8.setText("Need Water " + plants.getData().getPerangkat().getData().get(position).getKondisi());
         } else
             textView8.setText(" Normal ");
     }
 
     @Override
     public void getweatherforecast(ResponseWeather weatherforecast, String message) {
-//        weatherLastUpdate.setText(weatherforecast.getData().getCurrent().getLastUpdated());
         if (weatherforecast != null) {
             weatherLocation.setText(plant.getLokasiLahan() + "," + weatherforecast.getData().getLocation().getCountry());
-            currentPrecipitation.setText(String.valueOf(weatherforecast.getData().getForecast().getForecastday().get(0).getDay().getTotalprecipMm()) + "mm");
+            currentPrecipitation.setText(weatherforecast.getData().getForecast().getForecastday().get(0).getDay().getTotalprecipMm() + "mm");
             weatherCondition.setText(weatherforecast.getData().getCurrent().getCondition().getText());
         } else
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-//        weatherImg.setImageResource(weatherforecast.getData().getCurrent().getCondition().getIcon());
     }
 
     @Override
-    public void onPointerCaptureChanged(boolean hasCapture) {
-
+    public void isSuccessUpdateToken(boolean isSuccess, String meessages) {
+        Log.d("Token", "isSuccessUpdateToken: " + meessages);
     }
 
     @OnClick({R.id.waterPage, R.id.fertilizerPage})

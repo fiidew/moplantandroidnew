@@ -8,11 +8,12 @@ public class DetailPlantContract {
         void showLoading(boolean show);
         void getdetailplant (ResponseShowDetailPlant plants, String message);
         void getweatherforecast(ResponseWeather weatherforecast, String message);
+        void isSuccessUpdateToken (boolean isSuccess, String meessages);
     }
 
     interface Presenter{
         void getDetailPlants(String token, String id);
         void getWeatherForecast(String token, String city);
-        //ketika ngambil data tanaman perlu difilter apa
+        void updateToken(String token, String id, String fcmtoken);
     }
 }
