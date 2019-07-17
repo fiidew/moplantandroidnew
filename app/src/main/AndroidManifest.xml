@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.nutplant">
-
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -12,7 +15,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".IgnoreActivity"></activity>
+        <activity android:name=".feature.admin.detail.TypeDetailActivity"></activity>
+        <activity android:name=".feature.admin.item.ItemTypeActivity" />
+        <activity android:name=".feature.admin.list.ListTipeActivity" />
+        <activity android:name=".feature.admin.FormDataPlantActivity" />
+        <activity android:name=".IgnoreActivity" />
         <activity android:name=".feature.manage.history.HistoryActivity" />
         <activity android:name=".feature.notification.NotificationActivity" />
         <activity android:name=".feature.history.item.ItemHistoryActivity" />
@@ -34,6 +41,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <service
             android:name=".firebase.MyFirebaseMessagingService"
             android:stopWithTask="false">

@@ -15,6 +15,7 @@ public class SessionManager {
     public static final String KEY_ID = "dev.zero.bengkeldoaibu.utils.KEY_ID";
 
     private static final String is_login = "login";
+    private static final String is_Admin = "admin";
     private final String SHARE_NAME = "loginsession";
     private Context context;
 
@@ -24,8 +25,9 @@ public class SessionManager {
         editor = preferences.edit();
     }
 
-    public void storeLogin(String id,String token){
+    public void storeLogin(String id,String token, Boolean isAdmin){
         editor.putBoolean(is_login,true);
+        editor.putBoolean(is_Admin,isAdmin);
         editor.putString(KEY_ID, id);
         editor.putString(KEY_TOKEN, token);
 
@@ -42,6 +44,10 @@ public class SessionManager {
 
     public boolean isLogin(){
         return preferences.getBoolean(is_login,false);
+    }
+
+    public boolean isAdmin(){
+        return preferences.getBoolean(is_Admin,false);
     }
 
     public void logout(){

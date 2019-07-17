@@ -6,7 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.example.nutplant.feature.admin.FormDataPlantActivity;
 import com.example.nutplant.R;
+import com.example.nutplant.feature.admin.list.ListTipeActivity;
 import com.example.nutplant.feature.auth.login.LoginActivity;
 import com.example.nutplant.feature.manage.ManageActivity;
 import com.example.nutplant.utils.SessionManager;
@@ -28,8 +30,13 @@ public class SplashScreenActivity extends AppCompatActivity {
             public void run() {
                 if (sessionManager.isLogin())
                 {
-                    Intent login = new Intent (SplashScreenActivity.this, ManageActivity.class);
-                    startActivity(login);
+                    if(sessionManager.isAdmin()){
+                        Intent admin=new Intent(SplashScreenActivity.this, ListTipeActivity.class);
+                        startActivity(admin);
+                    }else{
+                        Intent login = new Intent (SplashScreenActivity.this, ManageActivity.class);
+                        startActivity(login);
+                    }
                 }
                 else{
                     Intent home=new Intent(SplashScreenActivity.this, LoginActivity.class);

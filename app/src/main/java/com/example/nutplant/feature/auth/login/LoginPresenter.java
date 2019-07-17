@@ -36,12 +36,12 @@ public class LoginPresenter implements LoginContract.Presenter {
                 if (response.code() == 200){
                     ResponseLogin data = response.body();
                     if (data.getStatus()) {
-                        sessionManager.storeLogin(data.getData().getId(), data.getData().getToken());
-                        view.login(true, "Login success");
+                        sessionManager.storeLogin(data.getData().getId(), data.getData().getToken(), data.getData().getUsername().equals("admin"));
+                        view.login(true, "Login success",username.equals("admin"));
                     }else
-                        view.login(false, response.body().getMessage());
+                        view.login(false, response.body().getMessage(),false);
                 }else{
-                    view.login(false, "Login failed : " + response.message());
+                    view.login(false, "Login failed : " + response.message(), false);
                 }
             }
 
@@ -54,7 +54,7 @@ public class LoginPresenter implements LoginContract.Presenter {
     }
 
 
-    public void updateToken(String token, String id, String fcmtoken) {
+    public void updateToken(String token, String id, String fcmtoken, boolean isAdmin) {
         view.showLoading(true);
         Call<ResponseUserUpdate> login = service.updateUser(token,id,fcmtoken);
         login.enqueue(new Callback<ResponseUserUpdate>() {
@@ -64,11 +64,11 @@ public class LoginPresenter implements LoginContract.Presenter {
                 if (response.code() == 200){
                     ResponseUserUpdate data = response.body();
                     if (data.getStatus()) {
-                        view.isSuccessUpdateToken(true, "Login success");
+                        view.isSuccessUpdateToken(true, "Login success",isAdmin);
                     }else
-                        view.isSuccessUpdateToken(false, response.body().getMessage());
+                        view.isSuccessUpdateToken(false, response.body().getMessage(), isAdmin);
                 }else{
-                    view.isSuccessUpdateToken(false, "Login failed : " + response.message());
+                    view.isSuccessUpdateToken(false, "Login failed : " + response.message(), isAdmin);
                 }
             }
 
@@ -76,7 +76,7 @@ public class LoginPresenter implements LoginContract.Presenter {
             public void onFailure(Call<ResponseUserUpdate> call, Throwable t) {
                 view.showLoading(false);
                 call.cancel();
-                view.isSuccessUpdateToken(false, "Login failed : " + t.getMessage());
+                view.isSuccessUpdateToken(false, "Login failed : " + t.getMessage(), isAdmin);
 
             }
         });

@@ -16,9 +16,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nutplant.R;
+import com.example.nutplant.model.DataTipe;
 import com.example.nutplant.utils.SessionManager;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Locale;
@@ -49,9 +51,6 @@ public class AddPlantActivity extends AppCompatActivity implements AddPlantContr
 
     ProgressDialog dialog;
 
-    private Context mContext;
-    private Activity mActivity;
-
     AddPlantContract.Presenter presenter;
     private DatePickerDialog datePickerDialog;
     private SimpleDateFormat dateFormatter;
@@ -59,6 +58,7 @@ public class AddPlantActivity extends AppCompatActivity implements AddPlantContr
     SessionManager sessionManager;
 
     private CoordinatorLayout mCLayout;
+    ArrayList<String> tanamanServer = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,13 +81,10 @@ public class AddPlantActivity extends AppCompatActivity implements AddPlantContr
 
                 builder.setTitle("Choose a plant.");
 
-                final String[] tanaman = new String[]{
-                        "Kangkung",
-                        "Sawi",
-                        "Bayam",
-                        "Cabai",
-                        "Terong"
-                };
+                final String[] tanaman = new String[tanamanServer.size()];
+                for (int i = 0; i < tanamanServer.size(); i++) {
+                    tanaman[i] = tanamanServer.get(i);
+                }
 
                 builder.setSingleChoiceItems(
                         tanaman,
@@ -114,6 +111,7 @@ public class AddPlantActivity extends AppCompatActivity implements AddPlantContr
         });
 
         dateFormatter = new SimpleDateFormat("MM-dd-yyyy", Locale.US);
+        presenter.getSpecies(sessionManager.getToken());
     }
 
     private void showDateDialog() {
@@ -190,6 +188,17 @@ public class AddPlantActivity extends AppCompatActivity implements AddPlantContr
             finish();
         }
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void showSpecies(ArrayList<DataTipe> tipes, String message) {
+        if (tipes!=null){
+            tanamanServer.clear();
+            for (DataTipe tipe: tipes) {
+                tanamanServer.add(tipe.getTipe());
+            }
+            Toast.makeText(this, message + tanamanServer.size(), Toast.LENGTH_SHORT).show();
+        }else Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
     @Override

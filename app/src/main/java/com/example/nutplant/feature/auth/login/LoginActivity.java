@@ -12,13 +12,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.nutplant.feature.admin.FormDataPlantActivity;
 import com.example.nutplant.R;
+import com.example.nutplant.feature.admin.list.ListTipeActivity;
 import com.example.nutplant.feature.auth.register.RegisterActivity;
 import com.example.nutplant.feature.manage.ManageActivity;
 import com.example.nutplant.utils.SessionManager;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.firebase.iid.FirebaseInstanceIdService;
 import com.google.firebase.iid.InstanceIdResult;
 
 import butterknife.BindView;
@@ -53,26 +54,32 @@ public class LoginActivity extends Activity implements LoginContract.View {
     }
 
     @Override
-    public void login(boolean isSuccess, String meessages) {
+    public void login(boolean isSuccess, String meessages, boolean isAdmin) {
         if (isSuccess) {
             FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(this, new OnSuccessListener<InstanceIdResult>() {
                 @Override
                 public void onSuccess(InstanceIdResult instanceIdResult) {
                     String token = instanceIdResult.getToken();
                     Log.d("Token", "onSuccess: " + token);
-                    presenter.updateToken(sessionManager.getToken(),sessionManager.getIdUser(),token);
+                    presenter.updateToken(sessionManager.getToken(),sessionManager.getIdUser(),token, isAdmin);
                 }
             });
         } else Toast.makeText(this, meessages, Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public void isSuccessUpdateToken(boolean isSuccess, String meessages) {
+    public void isSuccessUpdateToken(boolean isSuccess, String meessages, boolean isAdmin) {
         if (isSuccess)
         {
-            Intent intent = new Intent(this, ManageActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
+            if (isAdmin){
+                Intent intent = new Intent(this, ListTipeActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+            }else{
+                Intent intent = new Intent(this, ManageActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+            }
         }else
         {
             Toast.makeText(this, meessages, Toast.LENGTH_SHORT).show();

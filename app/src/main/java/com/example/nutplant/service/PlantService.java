@@ -6,6 +6,8 @@ import com.example.nutplant.model.ResponseHistory;
 import com.example.nutplant.model.ResponseNotification;
 import com.example.nutplant.model.ResponseShowDetailPlant;
 import com.example.nutplant.model.ResponseShowplant;
+import com.example.nutplant.model.ResponseTipe;
+import com.example.nutplant.model.ResponseTipes;
 import com.example.nutplant.model.ResponseUpdate;
 import com.example.nutplant.model.User;
 import com.example.nutplant.model.weatherModel.ResponseWeather;
@@ -49,6 +51,7 @@ public interface PlantService {
                                             @Field("status") Integer status);
 
 
+    //kalo methodnya post trus ada field
     @FormUrlEncoded
     @POST(ApiURL.CREATE)
     Call<ResponseAddplant> createplants(
@@ -58,5 +61,30 @@ public interface PlantService {
             @Field("lokasiLahan") String lokasiLahan,
             @Field("spesies") String spesies,
             @Field("tanggal") String tanggal
+    );
+
+    @FormUrlEncoded
+    @POST(ApiURL.CREATETIPE)
+    Call<ResponseTipe> createtype(
+            @Header("Authorization") String token,
+            @Field("tipe") String tipe,
+            @Field("nitrogen") Integer nitrogen,
+            @Field("phosporusVL") Integer phosporusVL,
+            @Field("phosporusL") Integer phosporusL,
+            @Field("phosporusM") Integer phosporusM,
+            @Field("potassiumVL") Integer potassiumVL,
+            @Field("potassiumL") Integer potassiumL,
+            @Field("potassiumM") Integer potassiumM
+    );
+
+    @GET(ApiURL.GETALLTYPE)
+    Call<ResponseTipes> getalltype(
+            @Header("Authorization") String token
+    );
+
+    @GET(ApiURL.GETTYPE)
+    Call<ResponseTipes> gettype(
+            @Header("Authorization") String token,
+            @Path("id") String id
     );
 }
